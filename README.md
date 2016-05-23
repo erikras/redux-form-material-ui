@@ -5,8 +5,9 @@
 [![Build Status](https://img.shields.io/travis/erikras/redux-form-material-ui/master.svg?style=flat-square)](https://travis-ci.org/erikras/redux-form-material-ui)
 [![codecov.io](https://codecov.io/github/erikras/redux-form-material-ui/coverage.svg?branch=master)](https://codecov.io/github/erikras/redux-form-material-ui?branch=master)
 
-[redux-form-material-ui](https://github.com/erikras/redux-form-material-ui) is an adapter
-between Redux Form and Material UI components.
+[`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is an adapter
+between [`redux-form`](https://github.com/erikras/redux-form) and
+[`material-ui`](https://github.com/callemall/material-ui) components.
 
 ---
 
