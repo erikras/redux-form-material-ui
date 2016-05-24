@@ -21,7 +21,7 @@ const components = {
     onCheck: onChange
   }),
 
-  Slider: ({ onDragStart, ...props }) => React.createElement(Slider, {
+  Slider: ({ onDragStart, ...props }) => React.createElement(Slider, {  // eslint-disable-line no-unused-vars
     ...mapError(props, 'error'),
     onChange: (event, value) => props.onChange(value)
   }),
