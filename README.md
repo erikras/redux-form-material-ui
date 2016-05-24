@@ -19,6 +19,15 @@ Using [npm](https://www.npmjs.org/):
   $ npm install --save redux-form-material-ui
 ```
 
+## Available Components
+
+* [Checkbox](http://www.material-ui.com/#/components/checkbox)
+* [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)
+* [SelectField](http://www.material-ui.com/#/components/select-field)
+* [Slider](http://www.material-ui.com/#/components/slider)
+* [TextField](http://www.material-ui.com/#/components/text-field)
+* [Toggle](http://www.material-ui.com/#/components/toggle)
+
 ## Usage
 
 Pass this library as the `adapter` config property to `redux-form`, and then refer to the 

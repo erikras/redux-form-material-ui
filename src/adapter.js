@@ -2,11 +2,12 @@ import React from 'react'
 import { RadioButtonGroup } from 'material-ui/RadioButton'
 import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox'
+import Slider from 'material-ui/Slider'
 import Toggle from 'material-ui/Toggle'
 import SelectField from 'material-ui/SelectField'
 
-const mapError = ({ touched, error, ...props }) =>
-  touched && error ? { ...props, errorText: error } : props
+const mapError = ({ touched, error, ...props }, errorProp = 'errorText') =>
+  touched && error ? { ...props, [errorProp]: error } : props
 
 const components = {
 
@@ -20,6 +21,11 @@ const components = {
     onCheck: onChange
   }),
 
+  Slider: ({ onDragStart, ...props }) => React.createElement(Slider, {
+    ...mapError(props, 'error'),
+    onChange: (event, value) => props.onChange(value)
+  }),
+
   Toggle: ({ onChange, value, ...props }) => React.createElement(Toggle, {
     ...props,
     toggled: value ? true : false,
@@ -30,7 +36,7 @@ const components = {
     ...mapError(props),
     onChange: (event, index, value) => props.onChange(value)
   })
-  
+
 }
 
 const adapter = (key, props) => {
