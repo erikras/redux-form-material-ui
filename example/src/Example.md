@@ -1,4 +1,4 @@
-# `redux-form-material-ui` Demo
+# Redux Form Material UI Adapter
 
 This is a simple demonstration of how to connect all the standard
 [`material-ui`](https://github.com/callemall/material-ui) form elements to `redux-form` using the
