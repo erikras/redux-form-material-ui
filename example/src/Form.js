@@ -2,7 +2,14 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
-import adapter from 'redux-form-material-ui'
+import {
+  Checkbox,
+  RadioButtonGroup,
+  SelectField,
+  Slider,
+  TextField,
+  Toggle
+} from 'redux-form-material-ui'
 
 const validate = values => {
   const errors = {}
@@ -26,13 +33,13 @@ const Form = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="name" component="TextField" hintText="Name" floatingLabelText="Name"/>
+        <Field name="name" component={TextField} hintText="Name" floatingLabelText="Name"/>
       </div>
       <div>
-        <Field name="email" component="TextField" hintText="Email" floatingLabelText="Email"/>
+        <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
       </div>
       <div>
-        <Field name="delivery" component="RadioButtonGroup">
+        <Field name="delivery" component={RadioButtonGroup}>
           <RadioButton value="pickup" label="Pickup"/>
           <RadioButton value="delivery" label="Delivery"/>
         </Field>
@@ -40,7 +47,7 @@ const Form = props => {
       <div>
         <Field
           name="pizzas"
-          component="Slider"
+          component={Slider}
           description="How many pizzas do you want?"
           defaultValue={0}
           min={0}
@@ -50,7 +57,7 @@ const Form = props => {
       <div>
         <Field
           name="driver"
-          component="SelectField"
+          component={SelectField}
           hintText="Driver"
           floatingLabelText="Driver">
           <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
@@ -59,21 +66,21 @@ const Form = props => {
         </Field>
       </div>
       <div>
-        <Field name="thinCrust" component="Toggle" label="Thin Crust" labelPosition="right"/>
+        <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
       </div>
       <div>
-        <Field name="pepperoni" component="Checkbox" label="Pepperoni"/>
+        <Field name="pepperoni" component={Checkbox} label="Pepperoni"/>
       </div>
       <div>
-        <Field name="mushrooms" component="Checkbox" label="Mushrooms"/>
+        <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
       </div>
       <div>
-        <Field name="peppers" component="Checkbox" label="Peppers"/>
+        <Field name="peppers" component={Checkbox} label="Peppers"/>
       </div>
       <div>
         <Field
           name="notes"
-          component="TextField"
+          component={TextField}
           hintText="Notes"
           floatingLabelText="Notes"
           multiLine={true}
@@ -89,6 +96,5 @@ const Form = props => {
 
 export default reduxForm({
   form: 'example',
-  adapter,  // <----------- give redux-form the adapter here
   validate
 })(Form)

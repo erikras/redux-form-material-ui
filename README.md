@@ -5,11 +5,14 @@
 [![Build Status](https://img.shields.io/travis/erikras/redux-form-material-ui/master.svg?style=flat-square)](https://travis-ci.org/erikras/redux-form-material-ui)
 [![codecov.io](https://codecov.io/github/erikras/redux-form-material-ui/coverage.svg?branch=master)](https://codecov.io/github/erikras/redux-form-material-ui?branch=master)
 
-[`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is an adapter
-between [`redux-form`](https://github.com/erikras/redux-form) and
-[`material-ui`](https://github.com/callemall/material-ui) components.
+[`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is a set of 
+wrappers to facilitate the use of 
+[`material-ui`](https://github.com/callemall/material-ui) components with
+[`redux-form`](https://github.com/erikras/redux-form).
 
 ---
+
+## [Live Demo](http://erikras.github.io/redux-form-material-ui/) :eyes:
 
 ## Installation
 
@@ -30,32 +33,38 @@ Using [npm](https://www.npmjs.org/):
 
 ## Usage
 
-Pass this library as the `adapter` config property to `redux-form`, and then refer to the 
-Material UI widgets as strings to the `component` property of `redux-form`'s `Field` component.
+Rather than import your component class from `material-ui`, import it from `redux-form-material-ui`
+and then pass the component class directly to the `component` prop of `Field`.
 
 ```js
 import { reduxForm, Field } from 'redux-form'
 import MenuItem from 'material-ui/MenuItem'
 import { RadioButton } from 'material-ui/RadioButton'
-import adapter from 'redux-form-material-ui'
+import {
+  Checkbox,
+  RadioButtonGroup,
+  SelectField,
+  TextField,
+  Toggle
+} from 'redux-form-material-ui'
 
 class MyForm extends Component {
   render() {
     return (
       <form>
-        <Field name="username" component="TextField" hintText="Street"/>
+        <Field name="username" component={TextField} hintText="Street"/>
         
-        <Field name="plan" component="SelectField" hintText="Select a plan">
+        <Field name="plan" component={SelectField} hintText="Select a plan">
           <MenuItem value="monthly" primaryText="Monthly"/>
           <MenuItem value="yearly" primaryText="Yearly"/>
           <MenuItem value="lifetime" primaryText="Lifetime"/>
         </Field>
         
-        <Field name="agreeToTerms" component="Checkbox" label="Agree to terms?"/>
+        <Field name="agreeToTerms" component={Checkbox} label="Agree to terms?"/>
         
-        <Field name="receiveEmails" component="Toggle" label="Please spam me!"/>
+        <Field name="receiveEmails" component={Toggle} label="Please spam me!"/>
         
-        <Field name="bestFramework" component="RadioButtonGroup">
+        <Field name="bestFramework" component={RadioButtonGroup}>
           <RadioButton value="react" label="React"/>
           <RadioButton value="angular" label="Angular"/>
           <RadioButton value="ember" label="Ember"/>
@@ -67,8 +76,7 @@ class MyForm extends Component {
 
 // Decorate with redux-form
 MyForm = reduxForm({
-  form: 'myForm',
-  adapter
+  form: 'myForm'
 })
 
 export default MyForm

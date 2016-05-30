@@ -16,4 +16,5 @@ Available components:
 * [TextField](http://www.material-ui.com/#/components/text-field)
 * [Toggle](http://www.material-ui.com/#/components/toggle)
 
-
+The code for this example is
+[available here](https://github.com/erikras/redux-form-material-ui/tree/master/example).
