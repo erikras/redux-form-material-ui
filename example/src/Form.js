@@ -4,6 +4,7 @@ import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
 import {
   Checkbox,
+  DatePicker,
   RadioButtonGroup,
   SelectField,
   Slider,
@@ -76,6 +77,9 @@ const Form = props => {
       </div>
       <div>
         <Field name="peppers" component={Checkbox} label="Peppers"/>
+      </div>
+      <div>
+        <Field name="when" component={DatePicker} hintText="Day of delivery?"/>
       </div>
       <div>
         <Field

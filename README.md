@@ -25,6 +25,7 @@ Using [npm](https://www.npmjs.org/):
 ## Available Components
 
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
+* [DatePicker](http://www.material-ui.com/#/components/date-picker)
 * [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)
 * [SelectField](http://www.material-ui.com/#/components/select-field)
 * [Slider](http://www.material-ui.com/#/components/slider)
