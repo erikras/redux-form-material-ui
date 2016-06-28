@@ -78,7 +78,7 @@ class MyForm extends Component {
 // Decorate with redux-form
 MyForm = reduxForm({
   form: 'myForm'
-})
+})(MyForm)
 
 export default MyForm
 ```
