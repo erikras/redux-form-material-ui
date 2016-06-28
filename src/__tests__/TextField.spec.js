@@ -1,40 +1,57 @@
 import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import TextField from 'material-ui/TextField'
-import renderTextField from '../TextField'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import ReduxFormMaterialUITextField from '../TextField'
 
 expect.extend(expectJsx)
 
 describe('TextField', () => {
-  it('is a function', () => {
-    expect(renderTextField).toBeA('function')
+  it('has a display name', () => {
+    expect(ReduxFormMaterialUITextField.displayName)
+      .toBe('ReduxFormMaterialUITextField')
   })
 
   it('renders a TextField', () => {
-    expect(renderTextField({
+    expect(new ReduxFormMaterialUITextField({
       name: 'myText',
       value: 'Foo'
-    }))
-      .toEqualJSX(<TextField name="myText" value="Foo"/>)
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
   })
 
   it('renders a TextField with no error when not touched', () => {
-    expect(renderTextField({
+    expect(new ReduxFormMaterialUITextField({
       name: 'myText',
       value: 'Foo',
       error: 'FooError'
-    }))
-      .toEqualJSX(<TextField name="myText" value="Foo"/>)
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
   })
 
   it('renders a TextField with an error', () => {
-    expect(renderTextField({
+    expect(new ReduxFormMaterialUITextField({
       name: 'myText',
-      touched: true,
       value: 'Foo',
-      error: 'FooError'
-    }))
-      .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooError"/>)
+      error: 'FooError',
+      touched: true
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooError" ref="component"/>)
+  })
+
+  it('provides getRenderedComponent', () => {
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUITextField name="myText"/>
+      </MuiThemeProvider>
+    )
+
+    const element =
+      TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUITextField)
+    expect(element.getRenderedComponent).toBeA('function')
+    expect(element.getRenderedComponent()).toExist()
   })
 })

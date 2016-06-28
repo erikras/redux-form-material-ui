@@ -1,40 +1,57 @@
 import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import { RadioButtonGroup } from 'material-ui/RadioButton'
-import renderRadioButtonGroup from '../RadioButtonGroup'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import ReduxFormMaterialUIRadioButtonGroup from '../RadioButtonGroup'
 
 expect.extend(expectJsx)
 
 describe('RadioButtonGroup', () => {
-  it('is a function', () => {
-    expect(renderRadioButtonGroup).toBeA('function')
+  it('has a display name', () => {
+    expect(ReduxFormMaterialUIRadioButtonGroup.displayName)
+      .toBe('ReduxFormMaterialUIRadioButtonGroup')
   })
 
   it('renders a RadioButtonGroup', () => {
-    expect(renderRadioButtonGroup({
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
       name: 'myRadio',
       value: 'Foo'
-    }))
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo"/>)
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
   })
 
   it('renders a RadioButtonGroup with no error when not touched', () => {
-    expect(renderRadioButtonGroup({
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
       name: 'myRadio',
       value: 'Foo',
       error: 'FooError'
-    }))
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo"/>)
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
   })
 
   it('renders a RadioButtonGroup with an error', () => {
-    expect(renderRadioButtonGroup({
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
       name: 'myRadio',
       value: 'Foo',
-      touched: true,
-      error: 'FooError'
-    }))
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError"/>)
+      error: 'FooError',
+      touched: true
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError" ref="component"/>)
+  })
+
+  it('provides getRenderedComponent', () => {
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUIRadioButtonGroup name="myRadio"/>
+      </MuiThemeProvider>
+    )
+
+    const element = 
+      TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUIRadioButtonGroup)
+    expect(element.getRenderedComponent).toBeA('function')
+    expect(element.getRenderedComponent()).toExist()
   })
 })

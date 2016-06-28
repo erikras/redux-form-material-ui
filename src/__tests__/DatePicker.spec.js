@@ -1,46 +1,66 @@
 import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import expect, { createSpy } from 'expect'
 import expectJsx from 'expect-jsx'
 import DatePicker from 'material-ui/DatePicker'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import noop from 'lodash.noop'
-import renderDatePicker from '../DatePicker'
+import ReduxFormMaterialUIDatePicker from '../DatePicker'
 
 expect.extend(expectJsx)
 
 describe('DatePicker', () => {
-  it('is a function', () => {
-    expect(renderDatePicker).toBeA('function')
+  it('has a display name', () => {
+    expect(ReduxFormMaterialUIDatePicker.displayName).toBe('ReduxFormMaterialUIDatePicker')
   })
 
   it('renders a DatePicker with no value', () => {
-    expect(renderDatePicker({
-      name: 'myDatePicker'
-    }))
-      .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop}/>)
+    expect(new ReduxFormMaterialUIDatePicker({
+      name: 'myDatePicker',
+      onChange: noop
+    }).render())
+      .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop} ref="component"/>)
   })
 
   it('renders a DatePicker with a value', () => {
     const value = new Date('2016-01-01')
-    expect(renderDatePicker({
+    expect(new ReduxFormMaterialUIDatePicker({
       name: 'myDatePicker',
+      onChange: noop,
       value
-    }))
-      .toEqualJSX(<DatePicker name="myDatePicker" value={value} onChange={noop}/>)
+    }).render())
+      .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop} value={value} ref="component"/>)
   })
 
-  it('maps onChange properly for DatePicker', () => {
+  it('maps onChange properly', () => {
     const onChange = createSpy()
     const first = new Date('2016-01-01')
     const second = new Date('2016-02-29')
-    const slider = renderDatePicker({
-      name: 'myDatePicker',
-      value: first,
-      onChange: onChange
-    })
+
+    const dom = TestUtils.renderIntoDocument(
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <ReduxFormMaterialUIDatePicker name="myDatePicker" onChange={onChange} value={first}/>
+        </MuiThemeProvider>
+      )
+
+    const datePicker = TestUtils.findRenderedComponentWithType(dom, DatePicker)
     expect(onChange).toNotHaveBeenCalled()
-    slider.props.onChange(undefined, second)
+    datePicker.props.onChange(undefined, second)
     expect(onChange)
       .toHaveBeenCalled()
       .toHaveBeenCalledWith(second)
+  })
+
+  it('provides getRenderedComponent', () => {
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUIDatePicker name="myDatePicker" onChange={noop}/>
+      </MuiThemeProvider>
+    )
+
+    const element = TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUIDatePicker)
+    expect(element.getRenderedComponent).toBeA('function')
+    expect(element.getRenderedComponent()).toExist()
   })
 })

@@ -82,3 +82,34 @@ MyForm = reduxForm({
 
 export default MyForm
 ```
+
+## Instance API
+
+#### `getRenderedComponent()`
+
+Returns a reference to the Material UI component that has been rendered. This is useful for 
+calling instance methods on the Material UI components. For example, if you wanted to focus on 
+the `username` element when your form mounts, you could do:
+
+```js
+componentWillMount() {
+  this.refs.firstField      // the Field
+    .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+    .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+    .focus()                // on TextField
+}
+```
+
+as long as you specified a `ref` and `withRef` on your `Field` component.
+
+```js
+render() {
+  return (
+    <form>
+      ...
+      <Field name="username" component={TextField} withRef ref="firstField"/>
+      ...
+    </form>
+  )
+}
+```

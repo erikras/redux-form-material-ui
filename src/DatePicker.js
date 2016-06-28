@@ -1,8 +1,10 @@
-import { createElement } from 'react'
 import DatePicker from 'material-ui/DatePicker'
+import createComponent from './createComponent'
 
-export default (props) =>  // eslint-disable-line no-unused-vars
-  createElement(DatePicker, {
+export default createComponent(
+  DatePicker,
+  ({ onChange, ...props }) => ({
     ...props,
-    onChange: (event, value) => props.onChange(value)
+    onChange: (event, value) => onChange(value)
   })
+)

@@ -1,31 +1,46 @@
 import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import Checkbox from 'material-ui/Checkbox'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import noop from 'lodash.noop'
-import renderCheckbox from '../Checkbox'
+import ReduxFormMaterialUICheckbox from '../Checkbox'
 
 expect.extend(expectJsx)
 
 describe('Checkbox', () => {
-  it('is a function', () => {
-    expect(renderCheckbox).toBeA('function')
+  it('has a display name', () => {
+    expect(ReduxFormMaterialUICheckbox.displayName).toBe('ReduxFormMaterialUICheckbox')
   })
 
   it('renders an unchecked Checkbox', () => {
-    expect(renderCheckbox({
+    expect(new ReduxFormMaterialUICheckbox({
       name: 'myCheckbox',
       onChange: noop
-    }))
-      .toEqualJSX(<Checkbox name="myCheckbox" checked={false} onCheck={noop}/>)
+    }).render())
+      .toEqualJSX(<Checkbox name="myCheckbox" checked={false} onCheck={noop} ref="component"/>)
   })
 
   it('renders a checked Checkbox', () => {
-    expect(renderCheckbox({
+    expect(new ReduxFormMaterialUICheckbox({
       name: 'myCheckbox',
       onChange: noop,
       value: true
-    }))
-      .toEqualJSX(<Checkbox name="myCheckbox" checked={true} onCheck={noop}/>)
+    }).render())
+      .toEqualJSX(<Checkbox name="myCheckbox" checked={true} onCheck={noop} ref="component"/>)
+  })
+
+  it('provides getRenderedComponent', () => {
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUICheckbox name="myCheckbox" onChange={noop}/>
+      </MuiThemeProvider>
+    )
+
+    const element = TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUICheckbox)
+    expect(element.getRenderedComponent).toBeA('function')
+    expect(element.getRenderedComponent()).toExist()
   })
 })

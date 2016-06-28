@@ -1,5 +1,5 @@
-import { createElement } from 'react'
 import { RadioButtonGroup } from 'material-ui/RadioButton'
+import createComponent from './createComponent'
 import mapError from './mapError'
 
-export default props => createElement(RadioButtonGroup, mapError(props))
+export default createComponent(RadioButtonGroup, mapError)

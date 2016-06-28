@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
@@ -29,73 +29,83 @@ const validate = values => {
   return errors
 }
 
-const Form = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <Field name="name" component={TextField} hintText="Name" floatingLabelText="Name"/>
-      </div>
-      <div>
-        <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
-      </div>
-      <div>
-        <Field name="delivery" component={RadioButtonGroup}>
-          <RadioButton value="pickup" label="Pickup"/>
-          <RadioButton value="delivery" label="Delivery"/>
-        </Field>
-      </div>
-      <div>
-        <Field
-          name="pizzas"
-          component={Slider}
-          description="How many pizzas do you want?"
-          defaultValue={0}
-          min={0}
-          max={20}
-          step={1}/>
-      </div>
-      <div>
-        <Field
-          name="driver"
-          component={SelectField}
-          hintText="Driver"
-          floatingLabelText="Driver">
-          <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
-          <MenuItem value="bob@redux-pizza.com" primaryText="Bob"/>
-          <MenuItem value="carl@redux-pizza.com" primaryText="Carl"/>
-        </Field>
-      </div>
-      <div>
-        <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
-      </div>
-      <div>
-        <Field name="pepperoni" component={Checkbox} label="Pepperoni"/>
-      </div>
-      <div>
-        <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
-      </div>
-      <div>
-        <Field name="peppers" component={Checkbox} label="Peppers"/>
-      </div>
-      <div>
-        <Field name="when" component={DatePicker} hintText="Day of delivery?"/>
-      </div>
-      <div>
-        <Field
-          name="notes"
-          component={TextField}
-          hintText="Notes"
-          floatingLabelText="Notes"
-          multiLine={true}
-          rows={2}/>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
-      </div>
-    </form>
-  )
+class Form extends Component {
+  componentDidMount() {
+    this.refs.name            // the Field
+      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+      .focus()                // on TextField
+  }
+
+  render() {
+    const { handleSubmit, pristine, reset, submitting } = this.props
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <Field name="name" component={TextField} hintText="Name" floatingLabelText="Name"
+            ref="name" withRef/>
+        </div>
+        <div>
+          <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
+        </div>
+        <div>
+          <Field name="delivery" component={RadioButtonGroup}>
+            <RadioButton value="pickup" label="Pickup"/>
+            <RadioButton value="delivery" label="Delivery"/>
+          </Field>
+        </div>
+        <div>
+          <Field
+            name="pizzas"
+            component={Slider}
+            description="How many pizzas do you want?"
+            defaultValue={0}
+            min={0}
+            max={20}
+            step={1}/>
+        </div>
+        <div>
+          <Field
+            name="driver"
+            component={SelectField}
+            hintText="Driver"
+            floatingLabelText="Driver">
+            <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
+            <MenuItem value="bob@redux-pizza.com" primaryText="Bob"/>
+            <MenuItem value="carl@redux-pizza.com" primaryText="Carl"/>
+          </Field>
+        </div>
+        <div>
+          <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
+        </div>
+        <div>
+          <Field name="pepperoni" component={Checkbox} label="Pepperoni"/>
+        </div>
+        <div>
+          <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
+        </div>
+        <div>
+          <Field name="peppers" component={Checkbox} label="Peppers"/>
+        </div>
+        <div>
+          <Field name="when" component={DatePicker} hintText="Day of delivery?"/>
+        </div>
+        <div>
+          <Field
+            name="notes"
+            component={TextField}
+            hintText="Notes"
+            floatingLabelText="Notes"
+            multiLine={true}
+            rows={2}/>
+        </div>
+        <div>
+          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
+        </div>
+      </form>
+    )
+  }
 }
 
 export default reduxForm({

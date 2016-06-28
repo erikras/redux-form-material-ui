@@ -1,33 +1,58 @@
 import React from 'react'
+import TestUtils from 'react-addons-test-utils'
 import expect, { createSpy } from 'expect'
 import expectJsx from 'expect-jsx'
 import SelectField from 'material-ui/SelectField'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import noop from 'lodash.noop'
-import renderSelectField from '../SelectField'
+import ReduxFormMaterialUISelectField from '../SelectField'
 
 expect.extend(expectJsx)
 
 describe('SelectField', () => {
-  it('is a function', () => {
-    expect(renderSelectField).toBeA('function')
+  it('has a display name', () => {
+    expect(ReduxFormMaterialUISelectField.displayName)
+      .toBe('ReduxFormMaterialUISelectField')
   })
 
   it('renders a SelectField', () => {
-    expect(renderSelectField({
+    expect(new ReduxFormMaterialUISelectField({
       name: 'mySelect',
-      value: 'Foo',
-      onChange: noop
-    }))
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop}/>)
+      value: 'Foo'
+    }).render())
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
   })
 
-  it('maps onChange properly for SelectField', () => {
-    const onChange = createSpy()
-    const select = renderSelectField({
+  it('renders a SelectField with no error when not touched', () => {
+    expect(new ReduxFormMaterialUISelectField({
       name: 'mySelect',
       value: 'Foo',
-      onChange: onChange
-    })
+      error: 'FooError'
+    }).render())
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
+  })
+
+  it('renders a SelectField with an error', () => {
+    expect(new ReduxFormMaterialUISelectField({
+      name: 'mySelect',
+      value: 'Foo',
+      error: 'FooError',
+      touched: true
+    }).render())
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooError" onChange={noop} ref="component"/>)
+  })
+
+  it('maps onChange properly', () => {
+    const onChange = createSpy()
+
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUISelectField name="mySelect" onChange={onChange} value="Foo"/>
+      </MuiThemeProvider>
+    )
+
+    const select = TestUtils.findRenderedComponentWithType(dom, SelectField)
     expect(onChange).toNotHaveBeenCalled()
     select.props.onChange(undefined, 42, 'TheValue')
     expect(onChange)
@@ -35,25 +60,17 @@ describe('SelectField', () => {
       .toHaveBeenCalledWith('TheValue')
   })
 
-  it('renders a SelectField with no error when not touched', () => {
-    expect(renderSelectField({
-      name: 'mySelect',
-      value: 'Foo',
-      onChange: noop,
-      touched: false,
-      error: 'FooError'
-    }))
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop}/>)
-  })
+  it('provides getRenderedComponent', () => {
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUISelectField name="mySelect"/>
+      </MuiThemeProvider>
+    )
 
-  it('renders a SelectField with an error', () => {
-    expect(renderSelectField({
-      name: 'mySelect',
-      value: 'Foo',
-      onChange: noop,
-      touched: true,
-      error: 'FooError'
-    }))
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} errorText="FooError"/>)
+    const element =
+      TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUISelectField)
+    expect(element.getRenderedComponent).toBeA('function')
+    expect(element.getRenderedComponent()).toExist()
   })
 })
+
