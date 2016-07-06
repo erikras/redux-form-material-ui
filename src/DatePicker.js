@@ -3,8 +3,8 @@ import createComponent from './createComponent'
 
 export default createComponent(
   DatePicker,
-  ({ onChange, ...props }) => ({
-    ...props,
+  ({ input: { onChange, ...inputProps } }) => ({
+    ...inputProps,
     onChange: (event, value) => onChange(value)
   })
 )

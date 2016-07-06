@@ -18,16 +18,22 @@ describe('Slider', () => {
 
   it('renders a Slider', () => {
     expect(new ReduxFormMaterialUISlider({
-      name: 'mySlider',
-      value: 0.5
+      input: {
+        name: 'mySlider',
+        value: 0.5,
+        onDragStart: noop
+      }
     }).render())
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
   })
 
   it('renders a Slider with no error when not touched', () => {
     expect(new ReduxFormMaterialUISlider({
-      name: 'mySlider',
-      value: 0.5,
+      input: {
+        name: 'mySlider',
+        value: 0.5,
+        onDragStart: noop
+      },
       error: 'FooError'
     }).render())
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
@@ -35,12 +41,16 @@ describe('Slider', () => {
 
   it('renders a Slider with an error', () => {
     expect(new ReduxFormMaterialUISlider({
-      name: 'mySlider',
-      value: 0.5,
+      input: {
+        name: 'mySlider',
+        value: 0.5,
+        onDragStart: noop
+      },
       error: 'FooError',
       touched: true
     }).render())
-      .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooError" onChange={noop} ref="component"/>)
+      .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooError" onChange={noop}
+        ref="component"/>)
   })
 
   it('maps onChange properly', () => {
@@ -48,7 +58,7 @@ describe('Slider', () => {
 
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUISlider name="mySlider" onChange={onChange} value={0.5}/>
+        <ReduxFormMaterialUISlider name="mySlider" input={{ onChange, value: 0.5 }}/>
       </MuiThemeProvider>
     )
 
@@ -63,7 +73,7 @@ describe('Slider', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUISlider name="mySlider"/>
+        <ReduxFormMaterialUISlider input={{ name: 'mySlider' }}/>
       </MuiThemeProvider>
     )
 

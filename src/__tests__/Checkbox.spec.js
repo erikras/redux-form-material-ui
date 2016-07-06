@@ -17,17 +17,21 @@ describe('Checkbox', () => {
 
   it('renders an unchecked Checkbox', () => {
     expect(new ReduxFormMaterialUICheckbox({
-      name: 'myCheckbox',
-      onChange: noop
+      input: {
+        name: 'myCheckbox',
+        onChange: noop
+      }
     }).render())
       .toEqualJSX(<Checkbox name="myCheckbox" checked={false} onCheck={noop} ref="component"/>)
   })
 
   it('renders a checked Checkbox', () => {
     expect(new ReduxFormMaterialUICheckbox({
-      name: 'myCheckbox',
-      onChange: noop,
-      value: true
+      input: {
+        name: 'myCheckbox',
+        onChange: noop,
+        value: true
+      }
     }).render())
       .toEqualJSX(<Checkbox name="myCheckbox" checked={true} onCheck={noop} ref="component"/>)
   })
@@ -35,7 +39,7 @@ describe('Checkbox', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUICheckbox name="myCheckbox" onChange={noop}/>
+        <ReduxFormMaterialUICheckbox input={{ name: 'myCheckbox', onChange: noop }}/>
       </MuiThemeProvider>
     )
 

@@ -17,16 +17,20 @@ describe('RadioButtonGroup', () => {
 
   it('renders a RadioButtonGroup', () => {
     expect(new ReduxFormMaterialUIRadioButtonGroup({
-      name: 'myRadio',
-      value: 'Foo'
+      input: {
+        name: 'myRadio',
+        value: 'Foo'
+      }
     }).render())
       .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
   })
 
   it('renders a RadioButtonGroup with no error when not touched', () => {
     expect(new ReduxFormMaterialUIRadioButtonGroup({
-      name: 'myRadio',
-      value: 'Foo',
+      input: {
+        name: 'myRadio',
+        value: 'Foo'
+      },
       error: 'FooError'
     }).render())
       .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
@@ -34,12 +38,15 @@ describe('RadioButtonGroup', () => {
 
   it('renders a RadioButtonGroup with an error', () => {
     expect(new ReduxFormMaterialUIRadioButtonGroup({
-      name: 'myRadio',
-      value: 'Foo',
+      input: {
+        name: 'myRadio',
+        value: 'Foo'
+      },
       error: 'FooError',
       touched: true
     }).render())
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError" ref="component"/>)
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError"
+        ref="component"/>)
   })
 
   it('provides getRenderedComponent', () => {
@@ -49,7 +56,7 @@ describe('RadioButtonGroup', () => {
       </MuiThemeProvider>
     )
 
-    const element = 
+    const element =
       TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUIRadioButtonGroup)
     expect(element.getRenderedComponent).toBeA('function')
     expect(element.getRenderedComponent()).toExist()

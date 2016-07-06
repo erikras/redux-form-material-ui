@@ -18,18 +18,22 @@ describe('Toggle', () => {
 
   it('renders an untoggled Toggle', () => {
     expect(new ReduxFormMaterialUIToggle({
-      name: 'myToggle',
-      onChange: noop,
-      value: false
+      input: {
+        name: 'myToggle',
+        onChange: noop,
+        value: false
+      }
     }).render())
       .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component"/>)
   })
 
   it('renders a toggled Toggle', () => {
     expect(new ReduxFormMaterialUIToggle({
-      name: 'myToggle',
-      onChange: noop,
-      value: true
+      input: {
+        name: 'myToggle',
+        onChange: noop,
+        value: true
+      }
     }).render())
       .toEqualJSX(<Toggle name="myToggle" toggled onToggle={noop} ref="component"/>)
   })
@@ -37,7 +41,7 @@ describe('Toggle', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUIToggle name="myToggle" onChange={noop}/>
+        <ReduxFormMaterialUIToggle input={{ name: 'myToggle', onChange: noop }}/>
       </MuiThemeProvider>
     )
 

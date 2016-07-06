@@ -4,7 +4,8 @@ import mapError from './mapError'
 
 export default createComponent(
   SelectField,
-  ({ onChange, ...props }) => ({
+  ({ input: { onChange, ...inputProps }, ...props }) => ({
     ...mapError(props),
+    ...inputProps,
     onChange: (event, index, value) => onChange(value)
   }))

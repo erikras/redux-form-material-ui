@@ -3,7 +3,7 @@ import createComponent from './createComponent'
 
 export default createComponent(
   Toggle,
-  ({ onChange, value, ...props }) => ({
+  ({ input: { onChange, value, ...props } }) => ({
     ...props,
     toggled: value ? true : false,
     onToggle: onChange

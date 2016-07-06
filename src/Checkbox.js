@@ -3,8 +3,8 @@ import createComponent from './createComponent'
 
 export default createComponent(
   Checkbox,
-  ({ onChange, value, ...props }) => ({
-    ...props,
+  ({ input: { onChange, value, ...inputProps } }) => ({
+    ...inputProps,
     checked: value ? true : false,
     onCheck: onChange
   })

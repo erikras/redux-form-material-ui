@@ -18,16 +18,20 @@ describe('SelectField', () => {
 
   it('renders a SelectField', () => {
     expect(new ReduxFormMaterialUISelectField({
-      name: 'mySelect',
-      value: 'Foo'
+      input: {
+        name: 'mySelect',
+        value: 'Foo'
+      }
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
   })
 
   it('renders a SelectField with no error when not touched', () => {
     expect(new ReduxFormMaterialUISelectField({
-      name: 'mySelect',
-      value: 'Foo',
+      input: {
+        name: 'mySelect',
+        value: 'Foo'
+      },
       error: 'FooError'
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
@@ -35,12 +39,15 @@ describe('SelectField', () => {
 
   it('renders a SelectField with an error', () => {
     expect(new ReduxFormMaterialUISelectField({
-      name: 'mySelect',
-      value: 'Foo',
+      input: {
+        name: 'mySelect',
+        value: 'Foo'
+      },
       error: 'FooError',
       touched: true
     }).render())
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooError" onChange={noop} ref="component"/>)
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooError" onChange={noop}
+        ref="component"/>)
   })
 
   it('maps onChange properly', () => {
@@ -48,7 +55,7 @@ describe('SelectField', () => {
 
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUISelectField name="mySelect" onChange={onChange} value="Foo"/>
+        <ReduxFormMaterialUISelectField name="mySelect" input={{ onChange, value: 'Foo' }}/>
       </MuiThemeProvider>
     )
 
@@ -63,7 +70,7 @@ describe('SelectField', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUISelectField name="mySelect"/>
+        <ReduxFormMaterialUISelectField input={{ name: 'mySelect' }}/>
       </MuiThemeProvider>
     )
 

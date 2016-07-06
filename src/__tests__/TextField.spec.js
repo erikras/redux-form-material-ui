@@ -17,16 +17,20 @@ describe('TextField', () => {
 
   it('renders a TextField', () => {
     expect(new ReduxFormMaterialUITextField({
-      name: 'myText',
-      value: 'Foo'
+      input: {
+        name: 'myText',
+        value: 'Foo'
+      }
     }).render())
       .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
   })
 
   it('renders a TextField with no error when not touched', () => {
     expect(new ReduxFormMaterialUITextField({
-      name: 'myText',
-      value: 'Foo',
+      input: {
+        name: 'myText',
+        value: 'Foo'
+      },
       error: 'FooError'
     }).render())
       .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
@@ -34,8 +38,10 @@ describe('TextField', () => {
 
   it('renders a TextField with an error', () => {
     expect(new ReduxFormMaterialUITextField({
-      name: 'myText',
-      value: 'Foo',
+      input: {
+        name: 'myText',
+        value: 'Foo'
+      },
       error: 'FooError',
       touched: true
     }).render())

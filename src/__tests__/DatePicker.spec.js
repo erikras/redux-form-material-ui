@@ -17,8 +17,10 @@ describe('DatePicker', () => {
 
   it('renders a DatePicker with no value', () => {
     expect(new ReduxFormMaterialUIDatePicker({
-      name: 'myDatePicker',
-      onChange: noop
+      input: {
+        name: 'myDatePicker',
+        onChange: noop
+      }
     }).render())
       .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop} ref="component"/>)
   })
@@ -26,9 +28,11 @@ describe('DatePicker', () => {
   it('renders a DatePicker with a value', () => {
     const value = new Date('2016-01-01')
     expect(new ReduxFormMaterialUIDatePicker({
-      name: 'myDatePicker',
-      onChange: noop,
-      value
+      input: {
+        name: 'myDatePicker',
+        onChange: noop,
+        value
+      }
     }).render())
       .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop} value={value} ref="component"/>)
   })
@@ -40,7 +44,7 @@ describe('DatePicker', () => {
 
     const dom = TestUtils.renderIntoDocument(
         <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <ReduxFormMaterialUIDatePicker name="myDatePicker" onChange={onChange} value={first}/>
+          <ReduxFormMaterialUIDatePicker input={{ name: 'myDatePicker', onChange, value: first }}/>
         </MuiThemeProvider>
       )
 
@@ -55,7 +59,7 @@ describe('DatePicker', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUIDatePicker name="myDatePicker" onChange={noop}/>
+        <ReduxFormMaterialUIDatePicker input={{ name: 'myDatePicker', onChange: noop }}/>
       </MuiThemeProvider>
     )
 
