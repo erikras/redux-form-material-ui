@@ -10,6 +10,7 @@ You simply provide the string name of the Material UI component you want to rend
 
 Available components:
 
+* [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
 * [DatePicker](http://www.material-ui.com/#/components/date-picker)
 * [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)

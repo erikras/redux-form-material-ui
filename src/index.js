@@ -5,8 +5,10 @@ import Checkbox from './Checkbox'
 import Slider from './Slider'
 import Toggle from './Toggle'
 import SelectField from './SelectField'
+import AutoComplete from './AutoComplete'
 
 export {
+  AutoComplete,
   Checkbox,
   DatePicker,
   RadioButtonGroup,
