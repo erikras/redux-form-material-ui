@@ -31,7 +31,9 @@ describe('RadioButtonGroup', () => {
         name: 'myRadio',
         value: 'Foo'
       },
-      error: 'FooError'
+      meta: {
+        error: 'FooError'
+      }
     }).render())
       .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
   })
@@ -42,8 +44,10 @@ describe('RadioButtonGroup', () => {
         name: 'myRadio',
         value: 'Foo'
       },
-      error: 'FooError',
-      touched: true
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
     }).render())
       .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError"
         ref="component"/>)

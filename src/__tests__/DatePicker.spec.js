@@ -37,16 +37,32 @@ describe('DatePicker', () => {
       .toEqualJSX(<DatePicker name="myDatePicker" onChange={noop} value={value} ref="component"/>)
   })
 
+  it('renders a DatePicker with an error', () => {
+    const value = new Date('2016-01-01')
+    expect(new ReduxFormMaterialUIDatePicker({
+      input: {
+        name: 'myDatePicker',
+        value
+      },
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<DatePicker name="myDatePicker" value={value} errorText="FooError" onChange={noop}
+        ref="component"/>)
+  })
+
   it('maps onChange properly', () => {
     const onChange = createSpy()
     const first = new Date('2016-01-01')
     const second = new Date('2016-02-29')
 
     const dom = TestUtils.renderIntoDocument(
-        <MuiThemeProvider muiTheme={getMuiTheme()}>
-          <ReduxFormMaterialUIDatePicker input={{ name: 'myDatePicker', onChange, value: first }}/>
-        </MuiThemeProvider>
-      )
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUIDatePicker input={{ name: 'myDatePicker', onChange, value: first }}/>
+      </MuiThemeProvider>
+    )
 
     const datePicker = TestUtils.findRenderedComponentWithType(dom, DatePicker)
     expect(onChange).toNotHaveBeenCalled()

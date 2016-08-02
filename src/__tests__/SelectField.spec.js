@@ -32,7 +32,9 @@ describe('SelectField', () => {
         name: 'mySelect',
         value: 'Foo'
       },
-      error: 'FooError'
+      meta: {
+        error: 'FooError'
+      }
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
   })
@@ -43,8 +45,10 @@ describe('SelectField', () => {
         name: 'mySelect',
         value: 'Foo'
       },
-      error: 'FooError',
-      touched: true
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooError" onChange={noop}
         ref="component"/>)

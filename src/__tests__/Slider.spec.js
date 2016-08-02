@@ -34,7 +34,9 @@ describe('Slider', () => {
         value: 0.5,
         onDragStart: noop
       },
-      error: 'FooError'
+      meta: {
+        error: 'FooError'
+      }
     }).render())
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
   })
@@ -46,8 +48,10 @@ describe('Slider', () => {
         value: 0.5,
         onDragStart: noop
       },
-      error: 'FooError',
-      touched: true
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
     }).render())
       .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooError" onChange={noop}
         ref="component"/>)

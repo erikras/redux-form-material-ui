@@ -31,7 +31,9 @@ describe('TextField', () => {
         name: 'myText',
         value: 'Foo'
       },
-      error: 'FooError'
+      meta: {
+        error: 'FooError'
+      }
     }).render())
       .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
   })
@@ -42,8 +44,10 @@ describe('TextField', () => {
         name: 'myText',
         value: 'Foo'
       },
-      error: 'FooError',
-      touched: true
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
     }).render())
       .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooError" ref="component"/>)
   })
@@ -59,5 +63,9 @@ describe('TextField', () => {
       TestUtils.findRenderedComponentWithType(dom, ReduxFormMaterialUITextField)
     expect(element.getRenderedComponent).toBeA('function')
     expect(element.getRenderedComponent()).toExist()
+  })
+
+  it('focuses when field gets active prop', () => {
+
   })
 })

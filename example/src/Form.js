@@ -14,7 +14,7 @@ import {
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'name', 'email', 'driver' ]
+  const requiredFields = [ 'name', 'email', 'driver', 'when' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -88,7 +88,11 @@ class Form extends Component {
           <Field name="peppers" component={Checkbox} label="Peppers"/>
         </div>
         <div>
-          <Field name="when" component={DatePicker} hintText="Day of delivery?"/>
+          <Field name="when"
+            component={DatePicker}
+            defaultValue={null} // DatePicker requires an object,
+                                // and redux-form defaults to ''
+            hintText="Day of delivery?"/>
         </div>
         <div>
           <Field
