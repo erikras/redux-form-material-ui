@@ -31,7 +31,8 @@ describe('AutoComplete', () => {
         value: 'Foo'
       }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo" onChange={noop} ref="component"/>)
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
+        onChange={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with no error when not touched', () => {
@@ -41,9 +42,12 @@ describe('AutoComplete', () => {
         name: 'myAutoComplete',
         value: 'Foo'
       },
-      error: 'FooError'
+      meta: {
+        error: 'FooError'
+      }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo" onChange={noop} ref="component"/>)
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
+        onChange={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with an error', () => {
@@ -53,10 +57,13 @@ describe('AutoComplete', () => {
         name: 'myAutoComplete',
         value: 'Foo'
       },
-      error: 'FooError',
-      touched: true
+      meta: {
+        error: 'FooError',
+        touched: true
+      }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo" errorText="FooError" onChange={noop}
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
+        errorText="FooError" onChange={noop}
         ref="component"/>)
   })
 
@@ -65,7 +72,8 @@ describe('AutoComplete', () => {
 
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUIAutoComplete dataSource={dataSource} name="myAutoComplete" input={{ onChange, value: 'Foo' }}/>
+        <ReduxFormMaterialUIAutoComplete dataSource={dataSource} name="myAutoComplete"
+          input={{ onChange, value: 'Foo' }}/>
       </MuiThemeProvider>
     )
 
@@ -80,7 +88,8 @@ describe('AutoComplete', () => {
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUIAutoComplete dataSource={dataSource} input={{ name: 'myAutoComplete' }}/>
+        <ReduxFormMaterialUIAutoComplete dataSource={dataSource}
+          input={{ name: 'myAutoComplete' }}/>
       </MuiThemeProvider>
     )
 
