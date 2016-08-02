@@ -32,7 +32,7 @@ describe('AutoComplete', () => {
       }
     }).render())
       .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        onChange={noop} ref="component"/>)
+        onNewRequest={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with no error when not touched', () => {
@@ -47,7 +47,7 @@ describe('AutoComplete', () => {
       }
     }).render())
       .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        onChange={noop} ref="component"/>)
+        onNewRequest={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with an error', () => {
@@ -63,11 +63,10 @@ describe('AutoComplete', () => {
       }
     }).render())
       .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        errorText="FooError" onChange={noop}
-        ref="component"/>)
+        errorText="FooError" onNewRequest={noop} ref="component"/>)
   })
 
-  it('maps onChange properly', () => {
+  it('maps onNewRequest properly', () => {
     const onChange = createSpy()
 
     const dom = TestUtils.renderIntoDocument(
