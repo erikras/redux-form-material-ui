@@ -24,6 +24,7 @@ Using [npm](https://www.npmjs.org/):
 
 ## Available Components
 
+* [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
 * [DatePicker](http://www.material-ui.com/#/components/date-picker)
 * [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)

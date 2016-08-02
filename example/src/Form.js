@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { RadioButton } from 'material-ui/RadioButton'
 import MenuItem from 'material-ui/MenuItem'
+import { AutoComplete as MUIAutoComplete } from 'material-ui'
 import {
+  AutoComplete,
   Checkbox,
   DatePicker,
   RadioButtonGroup,
@@ -102,6 +104,16 @@ class Form extends Component {
             floatingLabelText="Notes"
             multiLine={true}
             rows={2}/>
+        </div>
+        <div>
+          <Field
+            name="cheese"
+            component={AutoComplete}
+            floatingLabelText="Cheese"
+            openOnFocus={true}
+            filter={MUIAutoComplete.fuzzyFilter}
+            dataSource={[ 'Cheddar', 'Mozzarella', 'Parmesan', 'Provolone' ]}
+            />
         </div>
         <div>
           <button type="submit" disabled={pristine || submitting}>Submit</button>
