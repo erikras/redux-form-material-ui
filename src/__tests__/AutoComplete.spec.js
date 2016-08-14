@@ -28,11 +28,12 @@ describe('AutoComplete', () => {
       dataSource,
       input: {
         name: 'myAutoComplete',
-        value: 'Foo'
+        value: 'Foo',
+        onBlur: noop
       }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        onNewRequest={noop} ref="component"/>)
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" value="Foo"
+        onNewRequest={noop} onBlur={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with no error when not touched', () => {
@@ -40,14 +41,15 @@ describe('AutoComplete', () => {
       dataSource,
       input: {
         name: 'myAutoComplete',
-        value: 'Foo'
+        value: 'Foo',
+        onBlur: noop
       },
       meta: {
         error: 'FooError'
       }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        onNewRequest={noop} ref="component"/>)
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" value="Foo"
+        onNewRequest={noop} onBlur={noop} ref="component"/>)
   })
 
   it('renders an AutoComplete with an error', () => {
@@ -55,15 +57,16 @@ describe('AutoComplete', () => {
       dataSource,
       input: {
         name: 'myAutoComplete',
-        value: 'Foo'
+        value: 'Foo',
+        onBlur: noop
       },
       meta: {
         error: 'FooError',
         touched: true
       }
     }).render())
-      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
-        errorText="FooError" onNewRequest={noop} ref="component"/>)
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" value="Foo"
+        errorText="FooError" onNewRequest={noop} onBlur={noop} ref="component"/>)
   })
 
   it('maps onNewRequest properly', () => {
@@ -98,4 +101,3 @@ describe('AutoComplete', () => {
     expect(element.getRenderedComponent()).toExist()
   })
 })
-

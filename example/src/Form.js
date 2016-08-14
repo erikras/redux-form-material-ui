@@ -116,6 +116,22 @@ class Form extends Component {
             />
         </div>
         <div>
+          <Field
+            name="referral"
+            component={AutoComplete}
+            floatingLabelText="How did you find us?"
+            openOnFocus={true}
+            filter={MUIAutoComplete.fuzzyFilter}
+            dataSourceConfig={{ text: 'name', value: 'id' }}
+            dataSource={[
+              { id: 0, name: 'Facebook' },
+              { id: 1, name: 'Yelp' },
+              { id: 2, name: 'TV Ad' },
+              { id: 3, name: 'Friend' },
+              { id: 4, name: 'Other' }
+            ]}/>
+        </div>
+        <div>
           <button type="submit" disabled={pristine || submitting}>Submit</button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
         </div>
