@@ -7,6 +7,7 @@ import {
   AutoComplete,
   Checkbox,
   DatePicker,
+  TimePicker,
   RadioButtonGroup,
   SelectField,
   Slider,
@@ -95,6 +96,13 @@ class Form extends Component {
             defaultValue={null} // DatePicker requires an object,
                                 // and redux-form defaults to ''
             hintText="Day of delivery?"/>
+        </div>
+        <div>
+          <Field name="at"
+            component={TimePicker}
+            defaultValue={null} // TimePicker requires an object,
+                                // and redux-form defaults to ''
+            hintText="At what time?"/>
         </div>
         <div>
           <Field
