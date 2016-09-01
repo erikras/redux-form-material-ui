@@ -1,12 +1,12 @@
 # redux-form-material-ui
 ---
-[![NPM Version](https://img.shields.io/npm/v/redux-form-material-ui.svg?style=flat-square)](https://www.npmjs.com/package/redux-form-material-ui) 
+[![NPM Version](https://img.shields.io/npm/v/redux-form-material-ui.svg?style=flat-square)](https://www.npmjs.com/package/redux-form-material-ui)
 [![NPM Downloads](https://img.shields.io/npm/dm/redux-form-material-ui.svg?style=flat-square)](https://www.npmjs.com/package/redux-form-material-ui)
 [![Build Status](https://img.shields.io/travis/erikras/redux-form-material-ui/master.svg?style=flat-square)](https://travis-ci.org/erikras/redux-form-material-ui)
 [![codecov.io](https://codecov.io/github/erikras/redux-form-material-ui/coverage.svg?branch=master)](https://codecov.io/github/erikras/redux-form-material-ui?branch=master)
 
-[`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is a set of 
-wrappers to facilitate the use of 
+[`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is a set of
+wrappers to facilitate the use of
 [`material-ui`](https://github.com/callemall/material-ui) components with
 [`redux-form`](https://github.com/erikras/redux-form).
 
@@ -26,6 +26,7 @@ Using [npm](https://www.npmjs.org/):
 
 * [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
+* [TimePicker](http://www.material-ui.com/#/components/time-picker)
 * [DatePicker](http://www.material-ui.com/#/components/date-picker)
 * [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)
 * [SelectField](http://www.material-ui.com/#/components/select-field)
@@ -55,17 +56,17 @@ class MyForm extends Component {
     return (
       <form>
         <Field name="username" component={TextField} hintText="Street"/>
-        
+
         <Field name="plan" component={SelectField} hintText="Select a plan">
           <MenuItem value="monthly" primaryText="Monthly"/>
           <MenuItem value="yearly" primaryText="Yearly"/>
           <MenuItem value="lifetime" primaryText="Lifetime"/>
         </Field>
-        
+
         <Field name="agreeToTerms" component={Checkbox} label="Agree to terms?"/>
-        
+
         <Field name="receiveEmails" component={Toggle} label="Please spam me!"/>
-        
+
         <Field name="bestFramework" component={RadioButtonGroup}>
           <RadioButton value="react" label="React"/>
           <RadioButton value="angular" label="Angular"/>
@@ -88,8 +89,8 @@ export default MyForm
 
 #### `getRenderedComponent()`
 
-Returns a reference to the Material UI component that has been rendered. This is useful for 
-calling instance methods on the Material UI components. For example, if you wanted to focus on 
+Returns a reference to the Material UI component that has been rendered. This is useful for
+calling instance methods on the Material UI components. For example, if you wanted to focus on
 the `username` element when your form mounts, you could do:
 
 ```js
