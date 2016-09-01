@@ -134,5 +134,9 @@ class Form extends Component {
 
 export default reduxForm({
   form: 'example',
+  initialValues: {
+    delivery: 'delivery',
+    name: 'Jane Doe'
+  },
   validate
 })(Form)

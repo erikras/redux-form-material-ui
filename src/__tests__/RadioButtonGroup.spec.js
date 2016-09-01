@@ -22,7 +22,7 @@ describe('RadioButtonGroup', () => {
         value: 'Foo'
       }
     }).render())
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" ref="component"/>)
   })
 
   it('renders a RadioButtonGroup with no error when not touched', () => {
@@ -35,7 +35,7 @@ describe('RadioButtonGroup', () => {
         error: 'FooError'
       }
     }).render())
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" ref="component"/>)
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" ref="component"/>)
   })
 
   it('renders a RadioButtonGroup with an error', () => {
@@ -49,7 +49,7 @@ describe('RadioButtonGroup', () => {
         touched: true
       }
     }).render())
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" errorText="FooError"
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" errorText="FooError"
         ref="component"/>)
   })
 
