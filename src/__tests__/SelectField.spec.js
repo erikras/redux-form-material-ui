@@ -71,6 +71,31 @@ describe('SelectField', () => {
       .toHaveBeenCalledWith('TheValue')
   })
 
+  it('maps onChange from Field property properly', () => {
+    const reduxFormOnChange = createSpy()
+    const fieldOnChange = createSpy()
+
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUISelectField name="mySelect" input={{ onChange:reduxFormOnChange, value: 'Foo' }} onChange={fieldOnChange}/>
+      </MuiThemeProvider>
+    )
+
+    const select = TestUtils.findRenderedComponentWithType(dom, SelectField)
+
+    expect(reduxFormOnChange).toNotHaveBeenCalled()
+    expect(fieldOnChange).toNotHaveBeenCalled()
+
+    select.props.onChange(undefined, 42, 'TheValue')
+
+    expect(reduxFormOnChange)
+      .toHaveBeenCalled()
+      .toHaveBeenCalledWith('TheValue')
+    expect(fieldOnChange)
+      .toHaveBeenCalled()
+      .toHaveBeenCalledWith('TheValue')
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
