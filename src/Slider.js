@@ -6,7 +6,7 @@ export default createComponent(
   Slider,
   ({ input: { onDragStart, ...inputProps }, ...props }) =>  // eslint-disable-line no-unused-vars
     ({
-      ...mapError({ ...props, input: inputProps }, 'error'),
+      ...inputProps,
       onChange: (event, value) => inputProps.onChange(value)
     })
 )

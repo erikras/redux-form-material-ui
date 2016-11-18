@@ -41,22 +41,6 @@ describe('Slider', () => {
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
   })
 
-  it('renders a Slider with an error', () => {
-    expect(new ReduxFormMaterialUISlider({
-      input: {
-        name: 'mySlider',
-        value: 0.5,
-        onDragStart: noop
-      },
-      meta: {
-        error: 'FooError',
-        touched: true
-      }
-    }).render())
-      .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooError" onChange={noop}
-        ref="component"/>)
-  })
-
   it('maps onChange properly', () => {
     const onChange = createSpy()
 
