@@ -24,7 +24,7 @@ describe('Toggle', () => {
         value: false
       }
     }).render())
-      .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component"/>)
+      .toEqualJSX(<Toggle name="myToggle" toggled={false} onToggle={noop} ref="component"/>)
   })
 
   it('renders a toggled Toggle', () => {
