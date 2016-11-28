@@ -18,7 +18,7 @@
     "react": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-redux": "^4.4.1",
-    "react-tap-event-plugin": "^1.0.0",
+    "react-tap-event-plugin": "^2.0.0",
     "redux": "^3.3.1",
     "redux-form": "6.0.0-rc.4",
     "redux-form-material-ui": "file:../",
