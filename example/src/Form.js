@@ -33,11 +33,22 @@ const validate = values => {
 }
 
 class Form extends Component {
+
+   constructor(props) {
+     super(props)
+     this.onSlideChange = this.onSlideChange.bind(this)
+     this.state = { pizzas: 0 }
+   }
+
   componentDidMount() {
     this.refs.name            // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
       .focus()                // on TextField
+  }
+
+  onSlideChange(value) {
+    this.setState({ pizzas: value })
   }
 
   render() {
@@ -61,11 +72,12 @@ class Form extends Component {
           <Field
             name="pizzas"
             component={Slider}
-            description="How many pizzas do you want?"
+            description={'How many pizzas? (' + this.state.pizzas + ' pizzas chosen)'}
             defaultValue={0}
             min={0}
             max={20}
-            step={1}/>
+            step={1}
+            onChange={this.onSlideChange}/>
         </div>
         <div>
           <Field
