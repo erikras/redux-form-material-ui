@@ -10,18 +10,16 @@ export default createComponent(
       ...inputProps
     },
     meta, // eslint-disable-line no-unused-vars
-    onCheck,
+    onCheck: onCheckFunc,
     ...props
   }) => ({
     ...inputProps,
     ...props,
     checked: value ? true : false,
     onCheck: (event, isInputChecked) => {
-      if(onCheck && typeof onCheck === 'function') {
-        onCheck(isInputChecked)
-      }
-      else {
-        onChange(isInputChecked)        
+      onChange(isInputChecked)
+      if(onCheckFunc && typeof onCheckFunc === 'function') {
+        onCheckFunc(isInputChecked)
       }
     }
   })
