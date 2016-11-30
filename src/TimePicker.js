@@ -9,14 +9,14 @@ export default createComponent(
       onBlur, // eslint-disable-line no-unused-vars
       ...inputProps
     },
-    onChange,
+    onChange: onChangeField,
     ...props
   }) => ({
     ...inputProps,
     ...mapError(props),
     onChange: (event, value) => {
-      if(onChange && typeof onChange === 'function') {
-        onChange(value)
+      if(onChangeField && typeof onChangeField === 'function') {
+        onChangeField(value)
       }
       else {
         inputProps.onChange(value)

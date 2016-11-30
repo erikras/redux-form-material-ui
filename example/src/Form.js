@@ -82,7 +82,11 @@ class Form extends Component {
           <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
         </div>
         <div>
-          <Field name="pepperoni" component={Checkbox} label="Pepperoni"/>
+          <Field name="pepperoni" component={Checkbox}
+            onCheck={value => {
+              console.log('onCheck ', value )
+            }}
+            label="Pepperoni"/>
         </div>
         <div>
           <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
@@ -95,6 +99,9 @@ class Form extends Component {
             component={DatePicker}
             defaultValue={null} // DatePicker requires an object,
                                 // and redux-form defaults to ''
+            onChange={(value) => {
+              console.log('date changed ', value)
+            }}
             hintText="Day of delivery?"/>
         </div>
         <div>
@@ -102,6 +109,9 @@ class Form extends Component {
             component={TimePicker}
             defaultValue={null} // TimePicker requires an object,
                                 // and redux-form defaults to ''
+            onChange={(value) => {
+              console.log('time changed ', value)
+            }}
             hintText="At what time?"/>
         </div>
         <div>
@@ -120,6 +130,9 @@ class Form extends Component {
             floatingLabelText="Cheese"
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
+            onNewRequest={value => {
+              console.log('AutoComplete ', value)
+            }}
             dataSource={[ 'Cheddar', 'Mozzarella', 'Parmesan', 'Provolone' ]}
             />
         </div>
@@ -136,7 +149,9 @@ export default reduxForm({
   form: 'example',
   initialValues: {
     delivery: 'delivery',
-    name: 'Jane Doe'
+    name: 'Jane Doe',
+    at: new Date(),
+    cheese: 'Cheddar'
   },
   validate
 })(Form)

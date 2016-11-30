@@ -4,16 +4,14 @@ import mapError from './mapError'
 
 export default createComponent(
   AutoComplete,
-  ({ input: { onChange, value, ...inputProps }, onNewRequest, ...props }) => ({
+  ({ input: { value, ...inputProps }, onNewRequest, dataSourceConfig, ...props }) => ({
     ...mapError(props),
     ...inputProps,
-    searchText: value,
+    searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
     onNewRequest: value => {
+      inputProps.onChange(value)
       if(onNewRequest && typeof onNewRequest === 'function') {
         onNewRequest(value)
-      }
-      else {
-        onChange(value)
       }
     }
   }))
