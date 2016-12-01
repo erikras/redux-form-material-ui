@@ -17,7 +17,7 @@ import {
 
 const validate = values => {
   const errors = {}
-  const requiredFields = [ 'name', 'email', 'driver', 'when' ]
+  const requiredFields = [ 'name', 'email', 'driver', 'when', 'at' ]
   requiredFields.forEach(field => {
     if (!values[ field ]) {
       errors[ field ] = 'Required'
@@ -57,12 +57,13 @@ class Form extends Component {
             <RadioButton value="delivery" label="Delivery"/>
           </Field>
         </div>
+        <div>How many pizzas do you want?</div>
         <div>
           <Field
             name="pizzas"
             component={Slider}
-            description="How many pizzas do you want?"
             defaultValue={0}
+            format={null}
             min={0}
             max={20}
             step={1}/>
@@ -84,7 +85,7 @@ class Form extends Component {
         <div>
           <Field name="pepperoni" component={Checkbox}
             onCheck={value => {
-              console.log('onCheck ', value )
+              console.log('onCheck ', value ) // eslint-disable-line no-console
             }}
             label="Pepperoni"/>
         </div>
@@ -97,20 +98,20 @@ class Form extends Component {
         <div>
           <Field name="when"
             component={DatePicker}
-            defaultValue={null} // DatePicker requires an object,
-                                // and redux-form defaults to ''
+            format={null}
             onChange={(value) => {
-              console.log('date changed ', value)
+              console.log('date changed ', value) // eslint-disable-line no-console
             }}
             hintText="Day of delivery?"/>
         </div>
         <div>
           <Field name="at"
             component={TimePicker}
+            format={null}
             defaultValue={null} // TimePicker requires an object,
                                 // and redux-form defaults to ''
             onChange={(value) => {
-              console.log('time changed ', value)
+              console.log('time changed ', value) // eslint-disable-line no-console
             }}
             hintText="At what time?"/>
         </div>
@@ -131,7 +132,7 @@ class Form extends Component {
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
             onNewRequest={value => {
-              console.log('AutoComplete ', value)
+              console.log('AutoComplete ', value) // eslint-disable-line no-console
             }}
             dataSource={[ 'Cheddar', 'Mozzarella', 'Parmesan', 'Provolone' ]}
             />
@@ -150,7 +151,6 @@ export default reduxForm({
   initialValues: {
     delivery: 'delivery',
     name: 'Jane Doe',
-    at: new Date(),
     cheese: 'Cheddar'
   },
   validate
