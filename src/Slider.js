@@ -4,9 +4,14 @@ import mapError from './mapError'
 
 export default createComponent(
   Slider,
-  ({ input: { onDragStart, ...inputProps }, ...props }) =>  // eslint-disable-line no-unused-vars
+  ({ input: { onDragStart, ...inputProps }, onChange: onChangeFunc, ...props }) =>  // eslint-disable-line no-unused-vars
     ({
       ...mapError({ ...props, input: inputProps }, 'error'),
-      onChange: (event, value) => inputProps.onChange(value)
+      onChange: (event, value) => {
+        inputProps.onChange(value)
+        if(onChangeFunc && typeof onChangeFunc === 'function') {
+          onChangeFunc(value)
+        }
+      }
     })
 )
