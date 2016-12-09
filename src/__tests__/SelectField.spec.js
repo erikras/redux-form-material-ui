@@ -54,6 +54,34 @@ describe('SelectField', () => {
         ref="component"/>)
   })
 
+  it('renders a SelectField with no warning when not touched', () => {
+    expect(new ReduxFormMaterialUISelectField({
+      input: {
+        name: 'mySelect',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning'
+      }
+    }).render())
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
+  })
+
+  it('renders a SelectField with an warning', () => {
+    expect(new ReduxFormMaterialUISelectField({
+      input: {
+        name: 'mySelect',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooWarning" onChange={noop}
+        ref="component"/>)
+  })
+
   it('maps onChange properly', () => {
     const onChange = createSpy()
 

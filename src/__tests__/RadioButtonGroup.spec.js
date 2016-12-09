@@ -53,6 +53,34 @@ describe('RadioButtonGroup', () => {
         ref="component"/>)
   })
 
+  it('renders a RadioButtonGroup with no warning when not touched', () => {
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
+      input: {
+        name: 'myRadio',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning'
+      }
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" ref="component"/>)
+  })
+
+  it('renders a RadioButtonGroup with an warning', () => {
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
+      input: {
+        name: 'myRadio',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" errorText="FooWarning"
+        ref="component"/>)
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>

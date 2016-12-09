@@ -53,6 +53,22 @@ describe('TimePicker', () => {
         ref="component"/>)
   })
 
+  it('renders a TimePicker with an warning', () => {
+    const value = new Date('2016-01-01')
+    expect(new ReduxFormMaterialUITimePicker({
+      input: {
+        name: 'myTimePicker',
+        value
+      },
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<TimePicker name="myTimePicker" value={value} errorText="FooWarning" onChange={noop}
+        ref="component"/>)
+  })
+
   it('maps onChange properly', () => {
     const onChange = createSpy()
     const first = new Date('August 22, 2016 10:15:00')

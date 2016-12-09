@@ -15,22 +15,11 @@ import {
   Toggle
 } from 'redux-form-material-ui'
 
-const validate = values => {
-  const errors = {}
-  const requiredFields = [ 'name', 'email', 'driver', 'when', 'at' ]
-  requiredFields.forEach(field => {
-    if (!values[ field ]) {
-      errors[ field ] = 'Required'
-    }
-  })
-  if (values.pizzas > 15) {
-    errors.pizzas = 'Are you mad?'
-  }
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-  return errors
-}
+// validation functions
+const required = value => value == null ? 'Required' : undefined
+const email = value => value &&
+  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email' : undefined
+const tooManyPizzas = value => value > 15 ? 'Are you mad?' : undefined
 
 class Form extends Component {
   componentDidMount() {
@@ -45,11 +34,19 @@ class Form extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <Field name="name" component={TextField} hintText="Name" floatingLabelText="Name"
+          <Field name="name"
+            component={TextField}
+            hintText="Name"
+            floatingLabelText="Name"
+            validate={required}
             ref="name" withRef/>
         </div>
         <div>
-          <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
+          <Field name="email"
+            component={TextField}
+            hintText="Email"
+            floatingLabelText="Email"
+            validate={[ required, email ]}/>
         </div>
         <div>
           <Field name="delivery" component={RadioButtonGroup}>
@@ -66,14 +63,16 @@ class Form extends Component {
             format={null}
             min={0}
             max={20}
-            step={1}/>
+            step={1}
+            warn={tooManyPizzas}/>
         </div>
         <div>
           <Field
             name="driver"
             component={SelectField}
             hintText="Driver"
-            floatingLabelText="Driver">
+            floatingLabelText="Driver"
+            validate={required}>
             <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
             <MenuItem value="bob@redux-pizza.com" primaryText="Bob"/>
             <MenuItem value="carl@redux-pizza.com" primaryText="Carl"/>
@@ -102,7 +101,8 @@ class Form extends Component {
             onChange={(value) => {
               console.log('date changed ', value) // eslint-disable-line no-console
             }}
-            hintText="Day of delivery?"/>
+            hintText="Day of delivery?"
+            validate={required}/>
         </div>
         <div>
           <Field name="at"
@@ -113,7 +113,8 @@ class Form extends Component {
             onChange={(value) => {
               console.log('time changed ', value) // eslint-disable-line no-console
             }}
-            hintText="At what time?"/>
+            hintText="At what time?"
+            validate={required}/>
         </div>
         <div>
           <Field
@@ -138,7 +139,7 @@ class Form extends Component {
             />
         </div>
         <div>
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={submitting}>Submit</button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
         </div>
       </form>
@@ -152,6 +153,5 @@ export default reduxForm({
     delivery: 'delivery',
     name: 'Jane Doe',
     cheese: 'Cheddar'
-  },
-  validate
+  }
 })(Form)

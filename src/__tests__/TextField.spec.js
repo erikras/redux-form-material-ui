@@ -52,6 +52,33 @@ describe('TextField', () => {
       .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooError" ref="component"/>)
   })
 
+  it('renders a TextField with no warning when not touched', () => {
+    expect(new ReduxFormMaterialUITextField({
+      input: {
+        name: 'myText',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning'
+      }
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="Foo" ref="component"/>)
+  })
+
+  it('renders a TextField with an warning', () => {
+    expect(new ReduxFormMaterialUITextField({
+      input: {
+        name: 'myText',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooWarning" ref="component"/>)
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>

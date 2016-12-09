@@ -20,7 +20,7 @@
     "react-redux": "^4.4.6",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0",
-    "redux-form": "^6.2.1",
+    "redux-form": "^6.3.2",
     "redux-form-material-ui": "file:../",
     "redux-form-website-template": "0.0.39"
   },
