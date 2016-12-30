@@ -89,17 +89,26 @@ describe('Slider', () => {
 
   it('maps onChange properly', () => {
     const onChange = createSpy()
+    const fieldOnChange = createSpy()
 
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
-        <ReduxFormMaterialUISlider name="mySlider" input={{ onChange, value: 0.5 }}/>
+        <ReduxFormMaterialUISlider name="mySlider" input={{ onChange, value: 0.5 }} onChange={fieldOnChange}/>
       </MuiThemeProvider>
     )
 
     const slider = TestUtils.findRenderedComponentWithType(dom, Slider)
+
     expect(onChange).toNotHaveBeenCalled()
+    expect(fieldOnChange).toNotHaveBeenCalled()
+
     slider.props.onChange(undefined, 0.9)
+
     expect(onChange)
+      .toHaveBeenCalled()
+      .toHaveBeenCalledWith(0.9)
+
+    expect(fieldOnChange)
       .toHaveBeenCalled()
       .toHaveBeenCalledWith(0.9)
   })
