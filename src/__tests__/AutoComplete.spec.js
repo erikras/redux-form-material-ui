@@ -66,6 +66,37 @@ describe('AutoComplete', () => {
         errorText="FooError" onNewRequest={noop} ref="component"/>)
   })
 
+  it('renders an AutoComplete with no warning when not touched', () => {
+    expect(new ReduxFormMaterialUIAutoComplete({
+      dataSource,
+      input: {
+        name: 'myAutoComplete',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning'
+      }
+    }).render())
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
+        onNewRequest={noop} ref="component"/>)
+  })
+
+  it('renders an AutoComplete with an warning', () => {
+    expect(new ReduxFormMaterialUIAutoComplete({
+      dataSource,
+      input: {
+        name: 'myAutoComplete',
+        value: 'Foo'
+      },
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<AutoComplete dataSource={dataSource} name="myAutoComplete" searchText="Foo"
+        errorText="FooWarning" onNewRequest={noop} ref="component"/>)
+  })
+
   it('maps onNewRequest properly', () => {
     const onChange = createSpy()
 

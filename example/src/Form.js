@@ -15,22 +15,11 @@ import {
   Toggle
 } from 'redux-form-material-ui'
 
-const validate = values => {
-  const errors = {}
-  const requiredFields = [ 'name', 'email', 'driver', 'when' ]
-  requiredFields.forEach(field => {
-    if (!values[ field ]) {
-      errors[ field ] = 'Required'
-    }
-  })
-  if (values.pizzas > 15) {
-    errors.pizzas = 'Are you mad?'
-  }
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
-  }
-  return errors
-}
+// validation functions
+const required = value => value == null ? 'Required' : undefined
+const email = value => value &&
+  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email' : undefined
+const tooManyPizzas = value => value > 15 ? 'Are you mad?' : undefined
 
 class Form extends Component {
 
@@ -56,11 +45,19 @@ class Form extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <Field name="name" component={TextField} hintText="Name" floatingLabelText="Name"
+          <Field name="name"
+            component={TextField}
+            hintText="Name"
+            floatingLabelText="Name"
+            validate={required}
             ref="name" withRef/>
         </div>
         <div>
-          <Field name="email" component={TextField} hintText="Email" floatingLabelText="Email"/>
+          <Field name="email"
+            component={TextField}
+            hintText="Email"
+            floatingLabelText="Email"
+            validate={[ required, email ]}/>
         </div>
         <div>
           <Field name="delivery" component={RadioButtonGroup}>
@@ -68,23 +65,27 @@ class Form extends Component {
             <RadioButton value="delivery" label="Delivery"/>
           </Field>
         </div>
+        <div>How many pizzas do you want?</div>
         <div>
           <Field
             name="pizzas"
             component={Slider}
             description={'How many pizzas? (' + this.state.pizzas + ' pizzas chosen)'}
             defaultValue={0}
+            format={null}
             min={0}
             max={20}
             step={1}
             onChange={this.onSlideChange}/>
+            warn={tooManyPizzas}/>
         </div>
         <div>
           <Field
             name="driver"
             component={SelectField}
             hintText="Driver"
-            floatingLabelText="Driver">
+            floatingLabelText="Driver"
+            validate={required}>
             <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
             <MenuItem value="bob@redux-pizza.com" primaryText="Bob"/>
             <MenuItem value="carl@redux-pizza.com" primaryText="Carl"/>
@@ -94,7 +95,11 @@ class Form extends Component {
           <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
         </div>
         <div>
-          <Field name="pepperoni" component={Checkbox} label="Pepperoni"/>
+          <Field name="pepperoni" component={Checkbox}
+            onCheck={value => {
+              console.log('onCheck ', value ) // eslint-disable-line no-console
+            }}
+            label="Pepperoni"/>
         </div>
         <div>
           <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
@@ -105,16 +110,24 @@ class Form extends Component {
         <div>
           <Field name="when"
             component={DatePicker}
-            defaultValue={null} // DatePicker requires an object,
-                                // and redux-form defaults to ''
-            hintText="Day of delivery?"/>
+            format={null}
+            onChange={(value) => {
+              console.log('date changed ', value) // eslint-disable-line no-console
+            }}
+            hintText="Day of delivery?"
+            validate={required}/>
         </div>
         <div>
           <Field name="at"
             component={TimePicker}
+            format={null}
             defaultValue={null} // TimePicker requires an object,
                                 // and redux-form defaults to ''
-            hintText="At what time?"/>
+            onChange={(value) => {
+              console.log('time changed ', value) // eslint-disable-line no-console
+            }}
+            hintText="At what time?"
+            validate={required}/>
         </div>
         <div>
           <Field
@@ -132,11 +145,14 @@ class Form extends Component {
             floatingLabelText="Cheese"
             openOnFocus={true}
             filter={MUIAutoComplete.fuzzyFilter}
+            onNewRequest={value => {
+              console.log('AutoComplete ', value) // eslint-disable-line no-console
+            }}
             dataSource={[ 'Cheddar', 'Mozzarella', 'Parmesan', 'Provolone' ]}
             />
         </div>
         <div>
-          <button type="submit" disabled={pristine || submitting}>Submit</button>
+          <button type="submit" disabled={submitting}>Submit</button>
           <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
         </div>
       </form>
@@ -148,7 +164,7 @@ export default reduxForm({
   form: 'example',
   initialValues: {
     delivery: 'delivery',
-    name: 'Jane Doe'
-  },
-  validate
+    name: 'Jane Doe',
+    cheese: 'Cheddar'
+  }
 })(Form)

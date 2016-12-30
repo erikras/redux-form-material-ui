@@ -1,4 +1,4 @@
-const mapError = ({ meta: { touched, error } = {}, input: { ...inputProps }, ...props }, errorProp = 'errorText') =>
-  touched && error ? { ...props, ...inputProps, [errorProp]: error } : { ...inputProps, ...props }
+const mapError = ({ meta: { touched, error, warning } = {}, input: { ...inputProps }, ...props }, errorProp = 'errorText') =>
+  touched && (error || warning) ? { ...props, ...inputProps, [errorProp]: error || warning } : { ...inputProps, ...props }
 
 export default mapError
