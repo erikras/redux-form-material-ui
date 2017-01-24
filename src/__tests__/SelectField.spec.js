@@ -23,7 +23,7 @@ describe('SelectField', () => {
         value: 'Foo'
       }
     }).render())
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component" onBlur={noop}/>)
   })
 
   it('renders a SelectField with no error when not touched', () => {
@@ -36,7 +36,7 @@ describe('SelectField', () => {
         error: 'FooError'
       }
     }).render())
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component" onBlur={noop}/>)
   })
 
   it('renders a SelectField with an error', () => {
@@ -51,7 +51,7 @@ describe('SelectField', () => {
       }
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooError" onChange={noop}
-        ref="component"/>)
+        ref="component" onBlur={noop}/>)
   })
 
   it('renders a SelectField with no warning when not touched', () => {
@@ -64,7 +64,7 @@ describe('SelectField', () => {
         warning: 'FooWarning'
       }
     }).render())
-      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component"/>)
+      .toEqualJSX(<SelectField name="mySelect" value="Foo" onChange={noop} ref="component" onBlur={noop}/>)
   })
 
   it('renders a SelectField with an warning', () => {
@@ -79,7 +79,7 @@ describe('SelectField', () => {
       }
     }).render())
       .toEqualJSX(<SelectField name="mySelect" value="Foo" errorText="FooWarning" onChange={noop}
-        ref="component"/>)
+        ref="component" onBlur={noop}/>)
   })
 
   it('maps onChange properly', () => {
@@ -137,4 +137,3 @@ describe('SelectField', () => {
     expect(element.getRenderedComponent()).toExist()
   })
 })
-
