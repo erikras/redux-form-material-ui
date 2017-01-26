@@ -135,11 +135,13 @@ describe('AutoComplete', () => {
 
   it('maps onNewRequest properly', () => {
     const onChange = createSpy()
+    const onNewRequest = createSpy()
 
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
         <ReduxFormMaterialUIAutoComplete
           dataSource={dataSource}
+          onNewRequest={onNewRequest}
           input={{ onChange, value: 'Foo' }}
         />
       </MuiThemeProvider>
@@ -150,7 +152,8 @@ describe('AutoComplete', () => {
       AutoComplete
     )
     expect(onChange).toNotHaveBeenCalled()
-    autocomplete.props.onNewRequest('TheValue')
+    autocomplete.props.onNewRequest('TheValue', -1)
+    expect(onNewRequest).toHaveBeenCalled().toHaveBeenCalledWith('TheValue', -1)
     expect(onChange).toHaveBeenCalled().toHaveBeenCalledWith('TheValue')
   })
 
