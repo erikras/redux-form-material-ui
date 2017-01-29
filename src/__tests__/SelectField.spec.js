@@ -124,6 +124,26 @@ describe('SelectField', () => {
       .toHaveBeenCalledWith('TheValue')
   })
 
+  it('calls onBlur with currently selected value', () => {
+    const fieldOnBlur = createSpy()
+
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUISelectField name="mySelect" input={{ value: 'Foo', onBlur: fieldOnBlur }} />
+      </MuiThemeProvider>
+    )
+
+    const select = TestUtils.findRenderedComponentWithType(dom, SelectField)
+
+    expect(fieldOnBlur).toNotHaveBeenCalled()
+
+    select.props.onBlur()
+
+    expect(fieldOnBlur)
+      .toHaveBeenCalled()
+      .toHaveBeenCalledWith('Foo')
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
