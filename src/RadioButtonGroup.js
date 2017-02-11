@@ -4,7 +4,7 @@ import mapError from './mapError'
 
 const mapValueToValueSelected = ({ input: { ...inputProps }, ...props }, errorProp) => {
   if(inputProps.value == '' && props.defaultSelected != undefined) {
-    return mapError({ ...props, input: { ...inputProps, valueSelected: props.defaultSelected } }, errorProp)
+    return mapError({ ...props, input: { ...inputProps, valueSelected: props.defaultSelected, defaultSelected: props.defaultSelected } }, errorProp)
   } else {
     return mapError({ ...props, input: { ...inputProps, valueSelected: inputProps.value } }, errorProp)
   }
