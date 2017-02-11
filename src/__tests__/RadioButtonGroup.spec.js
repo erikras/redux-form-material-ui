@@ -81,6 +81,18 @@ describe('RadioButtonGroup', () => {
         ref="component"/>)
   })
 
+  it('renders a RadioButtonGroup with an defaultSelected', () => {
+    expect(new ReduxFormMaterialUIRadioButtonGroup({
+      input: {
+        name: 'myRadio',
+        value: ''
+      },
+      defaultSelected: 'foo'
+    }).render())
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" defaultSelected="foo"
+        ref="component"/>)
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
