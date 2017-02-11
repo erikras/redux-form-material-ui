@@ -87,9 +87,9 @@ describe('RadioButtonGroup', () => {
         name: 'myRadio',
         value: ''
       },
-      defaultSelected: 'foo'
+      defaultSelected: 'Foo'
     }).render())
-      .toEqualJSX(<RadioButtonGroup name="myRadio" value="Foo" valueSelected="Foo" defaultSelected="foo"
+      .toEqualJSX(<RadioButtonGroup name="myRadio" value="" valueSelected="Foo" defaultSelected="Foo"
         ref="component"/>)
   })
 
