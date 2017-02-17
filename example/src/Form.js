@@ -23,11 +23,11 @@ const tooManyPizzas = value => value > 15 ? 'Are you mad?' : undefined
 
 class Form extends Component {
 
-   constructor(props) {
-     super(props)
-     this.onSlideChange = this.onSlideChange.bind(this)
-     this.state = { pizzas: 0 }
-   }
+  constructor(props) {
+    super(props)
+    this.onSlideChange = this.onSlideChange.bind(this)
+    this.state = { pizzas: 0 }
+  }
 
   componentDidMount() {
     this.refs.name            // the Field
