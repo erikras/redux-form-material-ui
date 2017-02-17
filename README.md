@@ -48,7 +48,8 @@ import {
   RadioButtonGroup,
   SelectField,
   TextField,
-  Toggle
+  Toggle,
+  DatePicker
 } from 'redux-form-material-ui'
 
 class MyForm extends Component {
@@ -64,6 +65,8 @@ class MyForm extends Component {
         </Field>
 
         <Field name="agreeToTerms" component={Checkbox} label="Agree to terms?"/>
+        
+        <Field name="eventDate" component={DatePicker} format={null} hintText="What day is the event?"/>
 
         <Field name="receiveEmails" component={Toggle} label="Please spam me!"/>
 
