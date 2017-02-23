@@ -6,15 +6,15 @@ export default createComponent(
   ({
     input: {
       onChange,
-      value,
       ...inputProps
     },
+    defaultToggled,
     meta, // eslint-disable-line no-unused-vars
     ...props
   }) => ({
     ...inputProps,
     ...props,
-    toggled: value ? true : false,
+    toggled: defaultToggled ? true : false,
     onToggle: onChange
   })
 )

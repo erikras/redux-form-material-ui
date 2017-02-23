@@ -20,9 +20,9 @@ describe('Toggle', () => {
     expect(new ReduxFormMaterialUIToggle({
       input: {
         name: 'myToggle',
-        onChange: noop,
-        value: false
-      }
+        onChange: noop
+      },
+      defaultToggled: false
     }).render())
       .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component"/>)
   })
@@ -31,9 +31,9 @@ describe('Toggle', () => {
     expect(new ReduxFormMaterialUIToggle({
       input: {
         name: 'myToggle',
-        onChange: noop,
-        value: true
-      }
+        onChange: noop
+      },
+      defaultToggled: true
     }).render())
       .toEqualJSX(<Toggle name="myToggle" toggled onToggle={noop} ref="component"/>)
   })
