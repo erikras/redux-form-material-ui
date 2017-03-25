@@ -1,12 +1,12 @@
 {
-  "name": "redux-form-material-ui",
+  "name": "redux-form-material-ui-fix",
   "version": "4.1.2",
   "description": "An adapter between Redux Form and Material UI components",
   "main": "./lib/index.js",
   "jsnext:main": "./es/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/erikras/redux-form-material-ui"
+    "url": "https://github.com/xuewenfei/redux-form-material-ui"
   },
   "scripts": {
     "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
@@ -32,9 +32,9 @@
   "author": "Erik Rasmussen <rasmussenerik@gmail.com> (http://github.com/erikras)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/erikras/redux-form-material-ui/issues"
+    "url": "https://github.com/xuewenfei/redux-form-material-ui/issues"
   },
-  "homepage": "https://github.com/erikras/redux-form-material-ui",
+  "homepage": "https://github.com/xuewenfei/redux-form-material-ui",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
