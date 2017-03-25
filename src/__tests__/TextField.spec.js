@@ -79,6 +79,21 @@ describe('TextField', () => {
       .toEqualJSX(<TextField name="myText" value="Foo" errorText="FooWarning" ref="component"/>)
   })
 
+  it('should render with defaultValue', () => {
+    expect(new ReduxFormMaterialUITextField({
+      input: {
+        name: 'myText',
+        value: ''
+      },
+      defaultValue: '5',
+      meta: {
+        warning: 'FooWarning',
+        touched: true
+      }
+    }).render())
+      .toEqualJSX(<TextField name="myText" value="5" errorText="FooWarning" ref="component"/>)
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
