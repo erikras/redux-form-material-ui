@@ -16,5 +16,5 @@ export default createComponent(
     },
     onUpdateInput: value => {
       inputProps.onChange(value)
-    }}
+    }
   }))
