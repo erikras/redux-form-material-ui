@@ -1,5 +1,5 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
+import TestUtils from 'react-dom/test-utils'
 import expect, { createSpy } from 'expect'
 import expectJsx from 'expect-jsx'
 import Slider from 'material-ui/Slider'
@@ -41,22 +41,6 @@ describe('Slider', () => {
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
   })
 
-  it('renders a Slider with an error', () => {
-    expect(new ReduxFormMaterialUISlider({
-      input: {
-        name: 'mySlider',
-        value: 0.5,
-        onDragStart: noop
-      },
-      meta: {
-        error: 'FooError',
-        touched: true
-      }
-    }).render())
-      .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooError" onChange={noop}
-        ref="component"/>)
-  })
-
   it('renders a Slider with no warning when not touched', () => {
     expect(new ReduxFormMaterialUISlider({
       input: {
@@ -69,22 +53,6 @@ describe('Slider', () => {
       }
     }).render())
       .toEqualJSX(<Slider name="mySlider" value={0.5} onChange={noop} ref="component"/>)
-  })
-
-  it('renders a Slider with an warning', () => {
-    expect(new ReduxFormMaterialUISlider({
-      input: {
-        name: 'mySlider',
-        value: 0.5,
-        onDragStart: noop
-      },
-      meta: {
-        warning: 'FooWarning',
-        touched: true
-      }
-    }).render())
-      .toEqualJSX(<Slider name="mySlider" value={0.5} error="FooWarning" onChange={noop}
-        ref="component"/>)
   })
 
   it('maps onChange properly', () => {
