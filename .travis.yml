@@ -1,7 +1,11 @@
 language: node_js
 
+before_install:
+  - npm install -g npm@latest
+
 node_js:
-  - "4.0"
+  - "6"
+  - "5"
   - "4"
   - "stable"
 
