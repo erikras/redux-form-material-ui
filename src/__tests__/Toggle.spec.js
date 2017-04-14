@@ -42,7 +42,7 @@ describe('Toggle', () => {
     expect(new ReduxFormMaterialUIToggle({
       input: {
         name: 'myToggle',
-        onChange: noop,
+        onChange: noop
       },
       toggled: true
     }).render())
