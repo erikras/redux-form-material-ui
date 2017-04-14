@@ -120,7 +120,6 @@ class Form extends Component {
             name="at"
             component={TimePicker}
             format={null}
-            defaultValue={null} // TimePicker requires an object,
             // and redux-form defaults to ''
             hintText="At what time?"
             validate={required}
