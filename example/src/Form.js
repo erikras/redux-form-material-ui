@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {Field, reduxForm, formValueSelector} from 'redux-form';
-import {RadioButton} from 'material-ui/RadioButton';
-import MenuItem from 'material-ui/MenuItem';
-import {AutoComplete as MUIAutoComplete} from 'material-ui';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { RadioButton } from 'material-ui/RadioButton'
+import MenuItem from 'material-ui/MenuItem'
+import { AutoComplete as MUIAutoComplete } from 'material-ui'
 import {
   AutoComplete,
   Checkbox,
@@ -13,27 +13,27 @@ import {
   SelectField,
   Slider,
   TextField,
-  Toggle,
-} from 'redux-form-material-ui';
+  Toggle
+} from 'redux-form-material-ui'
 
 // validation functions
-const required = value => (value == null ? 'Required' : undefined);
+const required = value => (value == null ? 'Required' : undefined)
 const email = value =>
   (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email'
-    : undefined);
-const tooManyPizzas = value => (value > 15 ? 'Are you mad?' : undefined);
+    : undefined)
+const tooManyPizzas = value => (value > 15 ? 'Are you mad?' : undefined)
 
 class Form extends Component {
   componentDidMount() {
     this.refs.name // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus(); // on TextField
+      .focus() // on TextField
   }
 
   render() {
-    const {handleSubmit, pristine, numPizzas, reset, submitting} = this.props;
+    const { handleSubmit, pristine, numPizzas, reset, submitting } = this.props
     return (
       <form onSubmit={handleSubmit}>
         <div>
@@ -153,13 +153,13 @@ class Form extends Component {
             floatingLabelText="How did you find us?"
             openOnFocus
             filter={MUIAutoComplete.fuzzyFilter}
-            dataSourceConfig={{text: 'name', value: 'id'}}
+            dataSourceConfig={{ text: 'name', value: 'id' }}
             dataSource={[
-              {id: 0, name: 'Facebook'},
-              {id: 1, name: 'Yelp'},
-              {id: 2, name: 'TV Ad'},
-              {id: 3, name: 'Friend'},
-              {id: 4, name: 'Other'},
+              { id: 0, name: 'Facebook' },
+              { id: 1, name: 'Yelp' },
+              { id: 2, name: 'TV Ad' },
+              { id: 3, name: 'Friend' },
+              { id: 4, name: 'Other' }
             ]}
           />
         </div>
@@ -174,15 +174,15 @@ class Form extends Component {
           </button>
         </div>
       </form>
-    );
+    )
   }
 }
 
-const selector = formValueSelector('example');
+const selector = formValueSelector('example')
 
 Form = connect(state => ({
-  numPizzas: selector(state, 'pizzas'),
-}))(Form);
+  numPizzas: selector(state, 'pizzas')
+}))(Form)
 
 Form = reduxForm({
   form: 'example',
@@ -190,8 +190,8 @@ Form = reduxForm({
     delivery: 'delivery',
     name: 'Jane Doe',
     cheese: 'Cheddar',
-    pizzas: 1,
-  },
-})(Form);
+    pizzas: 1
+  }
+})(Form)
 
-export default Form;
+export default Form

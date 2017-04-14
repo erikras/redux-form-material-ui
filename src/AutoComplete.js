@@ -1,9 +1,9 @@
-import AutoComplete from 'material-ui/AutoComplete';
-import createComponent from './createComponent';
-import mapError from './mapError';
+import AutoComplete from 'material-ui/AutoComplete'
+import createComponent from './createComponent'
+import mapError from './mapError'
 
 export default createComponent(AutoComplete, ({
-  input: {onChange, value},
+  input: { onChange, value },
   onNewRequest,
   dataSourceConfig,
   ...props
@@ -15,15 +15,15 @@ export default createComponent(AutoComplete, ({
     onChange(
       typeof value === 'object' && dataSourceConfig
         ? value[dataSourceConfig.value]
-        : value,
-    );
+        : value
+    )
     if (onNewRequest) {
-      onNewRequest(value);
+      onNewRequest(value)
     }
   },
   onUpdateInput: value => {
     if (!dataSourceConfig) {
-      onChange(value);
+      onChange(value)
     }
-  },
-}));
+  }
+}))
