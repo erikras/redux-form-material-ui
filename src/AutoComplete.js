@@ -13,5 +13,8 @@ export default createComponent(
       if(onNewRequestFunc && typeof onNewRequestFunc === 'function') {
         onNewRequestFunc(value)
       }
+    },
+    onUpdateInput: value => {
+      inputProps.onChange(value)
     }
   }))
