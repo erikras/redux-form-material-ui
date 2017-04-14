@@ -1,5 +1,5 @@
 import React from 'react'
-import TestUtils from 'react-addons-test-utils'
+import TestUtils from 'react-dom/test-utils'
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import Toggle from 'material-ui/Toggle'
