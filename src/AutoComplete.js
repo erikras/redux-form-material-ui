@@ -21,4 +21,9 @@ export default createComponent(AutoComplete, ({
       onNewRequest(value);
     }
   },
+  onUpdateInput: value => {
+    if (!dataSourceConfig) {
+      onChange(value);
+    }
+  },
 }));
