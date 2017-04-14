@@ -98,6 +98,29 @@ describe('DatePicker', () => {
     )
   })
 
+  it('should ignore defaultDate', () => {
+    const defaultDate = new Date('2016-01-01')
+    expect(
+      new ReduxFormMaterialUIDatePicker({
+        input: {
+          name: 'myDatePicker'
+        },
+        meta: {
+          warning: 'FooWarning',
+          touched: true
+        },
+        defaultDate
+      }).render()
+    ).toEqualJSX(
+      <DatePicker
+        name="myDatePicker"
+        errorText="FooWarning"
+        onChange={noop}
+        ref="component"
+      />
+    )
+  })
+
   it('maps onChange properly', () => {
     const onChange = createSpy()
     const first = new Date('2016-01-01')

@@ -4,6 +4,7 @@ import mapError from './mapError'
 
 export default createComponent(TimePicker, ({
   input: { onBlur, ...inputProps },
+  defaultTime,
   onChange,
   ...props
 }) => ({

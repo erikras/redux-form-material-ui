@@ -31,6 +31,21 @@ describe('Slider', () => {
     )
   })
 
+  it('should ignore defaultValue', () => {
+    expect(
+      new ReduxFormMaterialUISlider({
+        input: {
+          name: 'mySlider',
+          value: 0.5,
+          onDragStart: noop
+        },
+        defaultValue: 0.8
+      }).render()
+    ).toEqualJSX(
+      <Slider name="mySlider" value={0.5} onChange={noop} ref="component" />
+    )
+  })
+
   it('renders a Slider with no error when not touched', () => {
     expect(
       new ReduxFormMaterialUISlider({

@@ -54,6 +54,24 @@ describe('Checkbox', () => {
     )
   })
 
+  it('should ignore defaultChecked', () => {
+    expect(
+      new ReduxFormMaterialUICheckbox({
+        input: {
+          name: 'myCheckbox',
+          onChange: noop
+        },
+        defaultChecked: true
+      }).render()
+    ).toEqualJSX(
+      <Checkbox
+        name="myCheckbox"
+        onCheck={noop}
+        ref="component"
+      />
+    )
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>

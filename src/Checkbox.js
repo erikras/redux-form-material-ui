@@ -5,6 +5,7 @@ export default createComponent(Checkbox, ({
   input: { onChange, value, ...inputProps },
   meta,
   onCheck,
+  defaultChecked,
   ...props
 }) => ({
   ...inputProps,

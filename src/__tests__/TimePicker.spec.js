@@ -98,6 +98,29 @@ describe('TimePicker', () => {
     )
   })
 
+  it('should ignore defaultTime', () => {
+    const defaultTime = new Date('2016-01-01')
+    expect(
+      new ReduxFormMaterialUITimePicker({
+        input: {
+          name: 'myTimePicker'
+        },
+        meta: {
+          warning: 'FooWarning',
+          touched: true
+        },
+        defaultTime
+      }).render()
+    ).toEqualJSX(
+      <TimePicker
+        name="myTimePicker"
+        errorText="FooWarning"
+        onChange={noop}
+        ref="component"
+      />
+    )
+  })
+
   it('maps onChange properly', () => {
     const onChange = createSpy()
     const first = new Date('August 22, 2016 10:15:00')
