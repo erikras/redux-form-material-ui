@@ -1,8 +1,9 @@
-import React, { Component } from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { RadioButton } from 'material-ui/RadioButton'
-import MenuItem from 'material-ui/MenuItem'
-import { AutoComplete as MUIAutoComplete } from 'material-ui'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Field, reduxForm, formValueSelector} from 'redux-form';
+import {RadioButton} from 'material-ui/RadioButton';
+import MenuItem from 'material-ui/MenuItem';
+import {AutoComplete as MUIAutoComplete} from 'material-ui';
 import {
   AutoComplete,
   Checkbox,
@@ -12,72 +13,68 @@ import {
   SelectField,
   Slider,
   TextField,
-  Toggle
-} from 'redux-form-material-ui'
+  Toggle,
+} from 'redux-form-material-ui';
 
 // validation functions
-const required = value => value == null ? 'Required' : undefined
-const email = value => value &&
-  !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? 'Invalid email' : undefined
-const tooManyPizzas = value => value > 15 ? 'Are you mad?' : undefined
+const required = value => (value == null ? 'Required' : undefined);
+const email = value =>
+  (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? 'Invalid email'
+    : undefined);
+const tooManyPizzas = value => (value > 15 ? 'Are you mad?' : undefined);
 
 class Form extends Component {
-
-  constructor(props) {
-    super(props)
-    this.onSlideChange = this.onSlideChange.bind(this)
-    this.state = { pizzas: 0 }
-  }
-
   componentDidMount() {
-    this.refs.name            // the Field
+    this.refs.name // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
-  }
-
-  onSlideChange(value) {
-    this.setState({ pizzas: value })
+      .focus(); // on TextField
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const {handleSubmit, pristine, numPizzas, reset, submitting} = this.props;
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <Field name="name"
+          <Field
+            name="name"
             component={TextField}
             hintText="Name"
             floatingLabelText="Name"
             validate={required}
-            ref="name" withRef/>
+            ref="name"
+            withRef
+          />
         </div>
         <div>
-          <Field name="email"
+          <Field
+            name="email"
             component={TextField}
             hintText="Email"
             floatingLabelText="Email"
-            validate={[ required, email ]}/>
+            validate={[required, email]}
+          />
         </div>
         <div>
           <Field name="delivery" component={RadioButtonGroup}>
-            <RadioButton value="pickup" label="Pickup"/>
-            <RadioButton value="delivery" label="Delivery"/>
+            <RadioButton value="pickup" label="Pickup" />
+            <RadioButton value="delivery" label="Delivery" />
           </Field>
         </div>
         <div>How many pizzas do you want?</div>
+        <div>{numPizzas}</div>
         <div>
           <Field
             name="pizzas"
             component={Slider}
-            description={'How many pizzas? (' + this.state.pizzas + ' pizzas chosen)'}
             defaultValue={0}
             format={null}
             min={0}
             max={20}
             step={1}
-            onChange={this.onSlideChange}/>
-            warn={tooManyPizzas}/>
+            warn={tooManyPizzas}
+          />
         </div>
         <div>
           <Field
@@ -85,49 +82,49 @@ class Form extends Component {
             component={SelectField}
             hintText="Driver"
             floatingLabelText="Driver"
-            validate={required}>
-            <MenuItem value="alice@redux-pizza.com" primaryText="Alice"/>
-            <MenuItem value="bob@redux-pizza.com" primaryText="Bob"/>
-            <MenuItem value="carl@redux-pizza.com" primaryText="Carl"/>
+            validate={required}
+          >
+            <MenuItem value="alice@redux-pizza.com" primaryText="Alice" />
+            <MenuItem value="bob@redux-pizza.com" primaryText="Bob" />
+            <MenuItem value="carl@redux-pizza.com" primaryText="Carl" />
           </Field>
         </div>
         <div>
-          <Field name="thinCrust" component={Toggle} label="Thin Crust" labelPosition="right"/>
+          <Field
+            name="thinCrust"
+            component={Toggle}
+            label="Thin Crust"
+            labelPosition="right"
+          />
         </div>
         <div>
-          <Field name="pepperoni" component={Checkbox}
-            onCheck={value => {
-              console.log('onCheck ', value ) // eslint-disable-line no-console
-            }}
-            label="Pepperoni"/>
+          <Field name="pepperoni" component={Checkbox} label="Pepperoni" />
         </div>
         <div>
-          <Field name="mushrooms" component={Checkbox} label="Mushrooms"/>
+          <Field name="mushrooms" component={Checkbox} label="Mushrooms" />
         </div>
         <div>
-          <Field name="peppers" component={Checkbox} label="Peppers"/>
+          <Field name="peppers" component={Checkbox} label="Peppers" />
         </div>
         <div>
-          <Field name="when"
+          <Field
+            name="when"
             component={DatePicker}
             format={null}
-            onChange={(value) => {
-              console.log('date changed ', value) // eslint-disable-line no-console
-            }}
             hintText="Day of delivery?"
-            validate={required}/>
+            validate={required}
+          />
         </div>
         <div>
-          <Field name="at"
+          <Field
+            name="at"
             component={TimePicker}
             format={null}
             defaultValue={null} // TimePicker requires an object,
-                                // and redux-form defaults to ''
-            onChange={(value) => {
-              console.log('time changed ', value) // eslint-disable-line no-console
-            }}
+            // and redux-form defaults to ''
             hintText="At what time?"
-            validate={required}/>
+            validate={required}
+          />
         </div>
         <div>
           <Field
@@ -135,52 +132,66 @@ class Form extends Component {
             component={TextField}
             hintText="Notes"
             floatingLabelText="Notes"
-            multiLine={true}
-            rows={2}/>
+            multiLine
+            rows={2}
+          />
         </div>
         <div>
           <Field
             name="cheese"
             component={AutoComplete}
             floatingLabelText="Cheese"
-            openOnFocus={true}
+            openOnFocus
             filter={MUIAutoComplete.fuzzyFilter}
-            onNewRequest={value => {
-              console.log('AutoComplete ', value) // eslint-disable-line no-console
-            }}
-            dataSource={[ 'Cheddar', 'Mozzarella', 'Parmesan', 'Provolone' ]}
-            />
+            dataSource={['Cheddar', 'Mozzarella', 'Parmesan', 'Provolone']}
+          />
         </div>
         <div>
           <Field
             name="referral"
             component={AutoComplete}
             floatingLabelText="How did you find us?"
-            openOnFocus={true}
+            openOnFocus
             filter={MUIAutoComplete.fuzzyFilter}
-            dataSourceConfig={{ text: 'name', value: 'id' }}
+            dataSourceConfig={{text: 'name', value: 'id'}}
             dataSource={[
-              { id: 0, name: 'Facebook' },
-              { id: 1, name: 'Yelp' },
-              { id: 2, name: 'TV Ad' },
-              { id: 3, name: 'Friend' },
-              { id: 4, name: 'Other' }
-            ]}/>
+              {id: 0, name: 'Facebook'},
+              {id: 1, name: 'Yelp'},
+              {id: 2, name: 'TV Ad'},
+              {id: 3, name: 'Friend'},
+              {id: 4, name: 'Other'},
+            ]}
+          />
         </div>
         <div>
           <button type="submit" disabled={submitting}>Submit</button>
-          <button type="button" disabled={pristine || submitting} onClick={reset}>Clear</button>
+          <button
+            type="button"
+            disabled={pristine || submitting}
+            onClick={reset}
+          >
+            Clear
+          </button>
         </div>
       </form>
-    )
+    );
   }
 }
 
-export default reduxForm({
+const selector = formValueSelector('example');
+
+Form = connect(state => ({
+  numPizzas: selector(state, 'pizzas'),
+}))(Form);
+
+Form = reduxForm({
   form: 'example',
   initialValues: {
     delivery: 'delivery',
     name: 'Jane Doe',
-    cheese: 'Cheddar'
-  }
-})(Form)
+    cheese: 'Cheddar',
+    pizzas: 1,
+  },
+})(Form);
+
+export default Form;

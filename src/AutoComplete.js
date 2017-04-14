@@ -1,23 +1,24 @@
-import AutoComplete from 'material-ui/AutoComplete'
-import createComponent from './createComponent'
-import mapError from './mapError'
+import AutoComplete from 'material-ui/AutoComplete';
+import createComponent from './createComponent';
+import mapError from './mapError';
 
-export default createComponent(
-  AutoComplete,
-  ({ input: { value, ...inputProps }, onNewRequest: onNewRequestFunc, dataSourceConfig, ...props }) => ({
-    ...mapError(props),
-    ...inputProps,
-    searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
-    onNewRequest: value => {
-      inputProps.onChange(
-        typeof value === 'object' ? value[props.dataSourceConfig.value] : value
-      )
-      if(onNewRequestFunc && typeof onNewRequestFunc === 'function') {
-        onNewRequestFunc(value)
-      }
-    },
-    onUpdateInput: value => {
-      inputProps.onChange(value)
-    },
-    onBlur: () => {}
-  }))
+export default createComponent(AutoComplete, ({
+  input: {onChange, value},
+  onNewRequest,
+  dataSourceConfig,
+  ...props
+}) => ({
+  ...mapError(props),
+  dataSourceConfig,
+  searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
+  onNewRequest: value => {
+    onChange(
+      typeof value === 'object' && dataSourceConfig
+        ? value[dataSourceConfig.value]
+        : value,
+    );
+    if (onNewRequest) {
+      onNewRequest(value);
+    }
+  },
+}));
