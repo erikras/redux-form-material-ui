@@ -46,7 +46,7 @@ describe('Slider', () => {
     )
   })
 
-  it('renders a Slider with no error when not touched', () => {
+  it('ignores errors', () => {
     expect(
       new ReduxFormMaterialUISlider({
         input: {
@@ -55,6 +55,7 @@ describe('Slider', () => {
           onDragStart: noop
         },
         meta: {
+          touched: true,
           error: 'FooError'
         }
       }).render()
@@ -63,7 +64,7 @@ describe('Slider', () => {
     )
   })
 
-  it('renders a Slider with no warning when not touched', () => {
+  it('ignores warnings', () => {
     expect(
       new ReduxFormMaterialUISlider({
         input: {
@@ -72,6 +73,7 @@ describe('Slider', () => {
           onDragStart: noop
         },
         meta: {
+          touched: true,
           warning: 'FooWarning'
         }
       }).render()
