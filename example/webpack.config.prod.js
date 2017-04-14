@@ -13,7 +13,7 @@ module.exports = {
     publicPath: '/dist/'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -26,17 +26,14 @@ module.exports = {
     })
   ],
   resolve: {
-    modulesDirectories: [
-      'src',
-      'node_modules'
-    ],
-    extensions: [ '', '.json', '.js' ]
+    modules: [ 'src', 'node_modules' ],
+    extensions: [ '.json', '.js' ]
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
+        loaders: [ 'babel-loader' ],
         include: path.join(__dirname, 'src')
       },
       {
