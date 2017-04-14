@@ -89,7 +89,7 @@ MyForm = reduxForm({
 export default MyForm
 ```
 
-## Quirks
+## No Default Values
 
 Because of the strict "controlled component" nature of `redux-form`,
 some of the Material UI functionality related to defaulting of values has been disabled
