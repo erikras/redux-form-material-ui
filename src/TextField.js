@@ -7,9 +7,6 @@ export default createComponent(TextField, ({
   defaultValue,
   ...props
 }) => {
-  if (inputProps.value === '') {
-    inputProps.value = defaultValue || inputProps.value
-  }
   return {
     ...inputProps,
     ...mapError(props)
