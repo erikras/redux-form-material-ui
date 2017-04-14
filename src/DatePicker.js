@@ -1,18 +1,18 @@
-import DatePicker from 'material-ui/DatePicker';
-import createComponent from './createComponent';
-import mapError from './mapError';
+import DatePicker from 'material-ui/DatePicker'
+import createComponent from './createComponent'
+import mapError from './mapError'
 
 export default createComponent(DatePicker, ({
-  input: {onBlur, ...inputProps},
+  input: { onBlur, ...inputProps },
   onChange,
   ...props
 }) => ({
   ...inputProps,
   ...mapError(props),
   onChange: (event, value) => {
-    inputProps.onChange(value);
+    inputProps.onChange(value)
     if (onChange) {
-      onChange(value);
+      onChange(value)
     }
-  },
-}));
+  }
+}))

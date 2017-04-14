@@ -1,9 +1,9 @@
-import SelectField from 'material-ui/SelectField';
-import createComponent from './createComponent';
-import mapError from './mapError';
+import SelectField from 'material-ui/SelectField'
+import createComponent from './createComponent'
+import mapError from './mapError'
 
 export default createComponent(SelectField, ({
-  input: {onChange, value, onBlur, ...inputProps},
+  input: { onChange, value, onBlur, ...inputProps },
   onChange: onChangeFromField,
   ...props
 }) => ({
@@ -11,10 +11,10 @@ export default createComponent(SelectField, ({
   ...inputProps,
   value: value,
   onChange: (event, index, value) => {
-    onChange(value);
+    onChange(value)
     if (onChangeFromField) {
-      onChangeFromField(value);
+      onChangeFromField(value)
     }
   },
-  onBlur: () => onBlur(value),
-}));
+  onBlur: () => onBlur(value)
+}))

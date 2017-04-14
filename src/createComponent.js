@@ -1,4 +1,4 @@
-import {Component, createElement} from 'react';
+import { Component, createElement } from 'react'
 
 /**
  * Creates a component class that renders the given Material UI component
@@ -10,16 +10,16 @@ import {Component, createElement} from 'react';
 export default function createComponent(MaterialUIComponent, mapProps) {
   class InputComponent extends Component {
     getRenderedComponent() {
-      return this.refs.component;
+      return this.refs.component
     }
 
     render() {
       return createElement(MaterialUIComponent, {
         ...mapProps(this.props),
-        ref: 'component',
-      });
+        ref: 'component'
+      })
     }
   }
-  InputComponent.displayName = `ReduxFormMaterialUI${MaterialUIComponent.name}`;
-  return InputComponent;
+  InputComponent.displayName = `ReduxFormMaterialUI${MaterialUIComponent.name}`
+  return InputComponent
 }

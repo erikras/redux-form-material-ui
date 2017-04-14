@@ -1,18 +1,18 @@
-import {RadioButtonGroup} from 'material-ui/RadioButton';
-import createComponent from './createComponent';
-import mapError from './mapError';
+import { RadioButtonGroup } from 'material-ui/RadioButton'
+import createComponent from './createComponent'
+import mapError from './mapError'
 
 const mapValueToValueSelected = (
-  {input: {...inputProps}, ...props},
-  errorProp,
+  { input: { ...inputProps }, ...props },
+  errorProp
 ) => {
   return mapError(
     {
       ...props,
-      input: {...inputProps, valueSelected: inputProps.value},
+      input: { ...inputProps, valueSelected: inputProps.value }
     },
-    errorProp,
-  );
-};
+    errorProp
+  )
+}
 
-export default createComponent(RadioButtonGroup, mapValueToValueSelected);
+export default createComponent(RadioButtonGroup, mapValueToValueSelected)
