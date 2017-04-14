@@ -5,6 +5,7 @@ import mapError from './mapError'
 export default createComponent(Slider, ({
   input: { onDragStart, onChange, ...inputProps },
   onChange: onChangeFromField,
+  defaultValue,
   ...props
 }) => ({
   // eslint-disable-line no-unused-vars
