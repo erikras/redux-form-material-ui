@@ -9,12 +9,15 @@ export default createComponent(
     ...inputProps,
     searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
     onNewRequest: value => {
-      inputProps.onChange(value)
+      inputProps.onChange(
+        typeof value === 'object' ? value[props.dataSourceConfig.value] : value
+      )
       if(onNewRequestFunc && typeof onNewRequestFunc === 'function') {
         onNewRequestFunc(value)
       }
     },
     onUpdateInput: value => {
       inputProps.onChange(value)
-    }
+    },
+    onBlur: () => {}
   }))
