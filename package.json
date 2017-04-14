@@ -70,8 +70,8 @@
     "webpack": "^2.3.3"
   },
   "peerDependencies": {
-    "react": "^15.2.0",
-    "redux-form": "^6.2.0"
+    "react": "15",
+    "redux-form": "6"
   },
   "files": [
     "README.md",
