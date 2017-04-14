@@ -1,7 +1,7 @@
 const mapError = (
   {
     meta: { touched, error, warning } = {},
-    input: { ...inputProps },
+    input,
     ...props
   },
   errorProp = 'errorText'
@@ -9,9 +9,9 @@ const mapError = (
   (touched && (error || warning)
     ? {
         ...props,
-        ...inputProps,
+        ...input,
         [errorProp]: error || warning
       }
-    : { ...inputProps, ...props })
+    : { ...input, ...props })
 
 export default mapError
