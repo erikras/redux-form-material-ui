@@ -8,13 +8,11 @@ export default createComponent(
       onChange,
       ...inputProps
     },
-    defaultToggled,
     meta, // eslint-disable-line no-unused-vars
     ...props
   }) => ({
     ...inputProps,
     ...props,
-    toggled: defaultToggled ? true : false,
     onToggle: onChange
   })
 )

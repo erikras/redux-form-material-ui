@@ -24,7 +24,7 @@ describe('Toggle', () => {
       },
       defaultToggled: false
     }).render())
-      .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component"/>)
+      .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component" defaultToggled={false} />)
   })
 
   it('renders a toggled Toggle', () => {
@@ -35,7 +35,18 @@ describe('Toggle', () => {
       },
       defaultToggled: true
     }).render())
-      .toEqualJSX(<Toggle name="myToggle" toggled onToggle={noop} ref="component"/>)
+      .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component" defaultToggled={true} />)
+  })
+
+  it('renders a controlled Toggle', () => {
+    expect(new ReduxFormMaterialUIToggle({
+      input: {
+        name: 'myToggle',
+        onChange: noop
+      },
+      toggled: true
+    }).render())
+      .toEqualJSX(<Toggle name="myToggle" onToggle={noop} ref="component" toggled={true} />)
   })
 
   it('provides getRenderedComponent', () => {
