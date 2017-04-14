@@ -99,7 +99,7 @@ describe('TextField', () => {
     )
   })
 
-  it('should render with defaultValue', () => {
+  it('should ignore defaultValue', () => {
     expect(
       new ReduxFormMaterialUITextField({
         input: {
@@ -115,7 +115,7 @@ describe('TextField', () => {
     ).toEqualJSX(
       <TextField
         name="myText"
-        value="5"
+        value=""
         errorText="FooWarning"
         ref="component"
       />
