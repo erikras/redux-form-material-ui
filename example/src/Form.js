@@ -190,6 +190,7 @@ Form = reduxForm({
     delivery: 'delivery',
     name: 'Jane Doe',
     cheese: 'Cheddar',
+    thinCrust: true,
     pizzas: 1
   }
 })(Form)
