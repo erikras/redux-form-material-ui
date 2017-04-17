@@ -6,12 +6,17 @@ export default createComponent(AutoComplete, ({
   input: { onChange, value },
   onNewRequest,
   dataSourceConfig,
+  dataSource,
   ...props
-}) => ({
+}) => {
+  const dataSourceValue = dataSourceConfig && dataSource.find(data => (
+    data[dataSourceConfig.value] == value));
+  return {
   ...mapError(props),
-  dataSourceConfig,
-  searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
-  onNewRequest: value => {
+    dataSourceConfig,
+    dataSource,
+    searchText: dataSourceValue ? dataSourceValue[dataSourceConfig.text] : value,
+    onNewRequest: value => {
     onChange(
       typeof value === 'object' && dataSourceConfig
         ? value[dataSourceConfig.value]
@@ -21,9 +26,8 @@ export default createComponent(AutoComplete, ({
       onNewRequest(value)
     }
   },
-  onUpdateInput: value => {
-    if (!dataSourceConfig) {
+    onUpdateInput: value => {
       onChange(value)
     }
-  }
-}))
+  };
+})
