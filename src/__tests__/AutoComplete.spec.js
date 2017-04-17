@@ -12,6 +12,11 @@ expect.extend(expectJsx)
 
 describe('AutoComplete', () => {
   const dataSource = ['One', 'Two', 'Three']
+  const dataSourceObject = [
+    { text: 'One', value: 1},
+    { text: 'Two', value: 2},
+    { text: 'Three', value: 3},
+  ]
 
   it('has a display name', () => {
     expect(ReduxFormMaterialUIAutoComplete.displayName).toBe(
@@ -33,6 +38,28 @@ describe('AutoComplete', () => {
       <AutoComplete
         dataSource={dataSource}
         searchText="Foo"
+        onNewRequest={noop}
+        ref="component"
+      />
+    )
+  })
+
+  it('renders an AutoComplete with dataSource objects', () => {
+    expect(
+      new ReduxFormMaterialUIAutoComplete({
+        dataSource: dataSourceObject,
+        dataSourceConfig: { text: 'text', value: 'value' },
+        input: {
+          name: 'myAutoComplete',
+          value: '3',
+          onBlur: noop
+        }
+      }).render()
+    ).toEqualJSX(
+      <AutoComplete
+        dataSource={dataSourceObject}
+        dataSourceConfig={{ text: 'text', value: 'value' }}
+        searchText="Three"
         onNewRequest={noop}
         ref="component"
       />
