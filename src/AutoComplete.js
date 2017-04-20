@@ -6,11 +6,13 @@ export default createComponent(AutoComplete, ({
   input: { onChange, value },
   onNewRequest,
   dataSourceConfig,
+  dataSource,
   ...props
 }) => ({
   ...mapError(props),
   dataSourceConfig,
-  searchText: dataSourceConfig ? value[dataSourceConfig.text] : value,
+  dataSource,
+  searchText: dataSourceConfig && dataSource ? (dataSource.find((item) => item[dataSourceConfig.value] === value) || {})[dataSourceConfig.text] : value,
   onNewRequest: value => {
     onChange(
       typeof value === 'object' && dataSourceConfig
