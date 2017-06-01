@@ -15,7 +15,7 @@ export default createComponent(AutoComplete, ({
   searchText: dataSourceConfig && dataSource ? (dataSource.find((item) => item[dataSourceConfig.value] === value) || {})[dataSourceConfig.text] : value,
   onNewRequest: value => {
     onChange(
-      typeof value === 'object' && dataSourceConfig
+      typeof value !== 'object' && dataSourceConfig
         ? value[dataSourceConfig.value]
         : value
     )
