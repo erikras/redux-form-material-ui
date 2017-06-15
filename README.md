@@ -44,12 +44,14 @@ and then pass the component class directly to the `component` prop of `Field`.
 import { reduxForm, Field } from 'redux-form'
 import MenuItem from 'material-ui/MenuItem'
 import { RadioButton } from 'material-ui/RadioButton'
-import Toggle from 'redux-form-material-ui/Toggle'
-import Checkbox from 'redux-form-material-ui/Checkbox'
-import TextField from 'redux-form-material-ui/TextField'
-import DatePicker from 'redux-form-material-ui/DatePicker'
-import SelectField from 'redux-form-material-ui/SelectField'
-import RadioButtonGroup from 'redux-form-material-ui/RadioButtonGroup'
+import {
+  Checkbox,
+  RadioButtonGroup,
+  SelectField,
+  TextField,
+  Toggle,
+  DatePicker
+} from 'redux-form-material-ui'
 
 class MyForm extends Component {
   render() {
