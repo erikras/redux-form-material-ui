@@ -5,6 +5,7 @@ import mapError from './mapError'
 export default createComponent(AutoComplete, ({
   input: { onChange, value },
   onNewRequest,
+  onUpdateInput,
   dataSourceConfig,
   dataSource,
   ...props
@@ -23,9 +24,13 @@ export default createComponent(AutoComplete, ({
       onNewRequest(value)
     }
   },
-  onUpdateInput: value => {
+  onUpdateInput: (value, ...restArgs) => {
     if (!dataSourceConfig) {
       onChange(value)
+    }
+
+    if (onUpdateInput) {
+      onUpdateInput(value, ...restArgs)
     }
   }
 }))
