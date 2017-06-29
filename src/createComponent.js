@@ -26,7 +26,7 @@ export default function createComponent(MaterialUIComponent, mapProps) {
       const propsToMap = {
         ...this.props
       };
-      if (propsToMap && propsToMap.input && propsToMap.input.onBlur) {
+      if (propsToMap.input && propsToMap.input.onBlur) {
         propsToMap.input.onBlur = this.allowClickEventOnInputButton(propsToMap.input.onBlur);
       }
 
