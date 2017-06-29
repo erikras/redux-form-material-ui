@@ -14,8 +14,18 @@ export default function createComponent(MaterialUIComponent, mapProps) {
     }
 
     render() {
+      const propsToMap = {
+        ...this.props,
+        onBlur: (event) => {
+          const { relatedTarget } = event;
+          if (relatedTarget && relatedTarget.getAttribute('type') === 'button') {
+            event.preventDefault();
+          }
+        }
+      }
+
       return createElement(MaterialUIComponent, {
-        ...mapProps(this.props),
+        ...mapProps(propsToMap),
         ref: 'component'
       })
     }
