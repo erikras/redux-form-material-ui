@@ -75,7 +75,7 @@
   },
   "peerDependencies": {
     "react": "15",
-    "redux-form": "6"
+    "redux-form": "7"
   },
   "files": [
     "README.md",
