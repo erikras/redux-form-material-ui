@@ -4,7 +4,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { reducer as reduxFormReducer } from 'redux-form'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Code, Markdown, Values } from 'redux-form-website-template'
 injectTapEventPlugin()
@@ -31,7 +30,7 @@ let render = () => {
   const raw = require('!!raw-loader!./Form')
   ReactDOM.render(
     <Provider store={store}>
-      <MuiThemeProvider muiTheme={getMuiTheme()}>
+      <MuiThemeProvider>
         <div>
           <Markdown content={readme} />
 
