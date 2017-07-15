@@ -116,6 +116,7 @@ describe('AutoComplete', () => {
     ).toEqualJSX(
       <AutoComplete
         name="myAutoComplete"
+        onBlur={onBlur}
         dataSource={dataSource}
         searchText="Foo"
         onNewRequest={noop}
@@ -140,6 +141,7 @@ describe('AutoComplete', () => {
     ).toEqualJSX(
       <AutoComplete
         name="myAutoComplete"
+        onBlur={onBlur}
         dataSource={dataSource}
         searchText="Foo"
         errorText="FooWarning"
@@ -186,5 +188,27 @@ describe('AutoComplete', () => {
     )
     expect(element.getRenderedComponent).toBeA('function')
     expect(element.getRenderedComponent()).toExist()
+  })
+
+  it('calls onBlur without event', () => {
+      const onBlurSpy = createSpy()
+      const testEvent = {}
+
+      const dom = TestUtils.renderIntoDocument(
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <ReduxFormMaterialUIAutoComplete
+            dataSource={dataSource}
+            input={{ onBlur: onBlurSpy, value: 'Foo' }}
+          />
+        </MuiThemeProvider>
+      )
+
+      const autocomplete = TestUtils.findRenderedComponentWithType(
+        dom,
+        AutoComplete
+      )
+      expect(onBlurSpy).toNotHaveBeenCalled()
+      autocomplete.props.onBlur(testEvent)
+      expect(onBlurSpy).toHaveBeenCalled().toHaveBeenCalledWith()
   })
 })
