@@ -1,21 +1,9 @@
-import AutoComplete from './AutoComplete'
-import Checkbox from './Checkbox'
-import DatePicker from './DatePicker'
-import RadioButtonGroup from './RadioButtonGroup'
-import SelectField from './SelectField'
-import Slider from './Slider'
-import TextField from './TextField'
-import TimePicker from './TimePicker'
-import Toggle from './Toggle'
-
-export {
-  AutoComplete,
-  Checkbox,
-  DatePicker,
-  TimePicker,
-  RadioButtonGroup,
-  SelectField,
-  Slider,
-  TextField,
-  Toggle
-}
+export { default as Toggle } from './Toggle'
+export { default as Slider } from './Slider'
+export { default as Checkbox } from './Checkbox'
+export { default as TextField } from './TextField'
+export { default as TimePicker } from './TimePicker'
+export { default as DatePicker } from './DatePicker'
+export { default as SelectField } from './SelectField'
+export { default as AutoComplete } from './AutoComplete'
+export { default as RadioButtonGroup } from './RadioButtonGroup'
