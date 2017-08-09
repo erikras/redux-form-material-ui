@@ -1,7 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import noop from 'lodash.noop'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Switch from 'material-ui/Switch'
 import React from 'react'
 import TestUtils from 'react-dom/test-utils'
@@ -96,11 +95,9 @@ describe('Switch', () => {
 
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
-      <MuiThemeProvider>
-        <ReduxFormMaterialUISwitch
-          input={{ name: 'mySwitch', onChange: noop }}
-        />
-      </MuiThemeProvider>
+      <ReduxFormMaterialUISwitch
+        input={{ name: 'mySwitch', onChange: noop }}
+      />
     )
 
     const element = TestUtils.findRenderedComponentWithType(

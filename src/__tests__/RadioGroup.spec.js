@@ -1,7 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import { RadioGroup } from 'material-ui/Radio'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import React from 'react'
 import TestUtils from 'react-dom/test-utils'
 import ReduxFormMaterialUIRadioGroup from '../RadioGroup'
@@ -34,11 +33,9 @@ describe('RadioGroup', () => {
 
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
-      <MuiThemeProvider>
-        <ReduxFormMaterialUIRadioGroup
-          input={{ name: 'myRadio', value: 'Foo' }}
-        />
-      </MuiThemeProvider>
+      <ReduxFormMaterialUIRadioGroup
+        input={{ name: 'myRadio', value: 'Foo' }}
+      />
     )
 
     const element = TestUtils.findRenderedComponentWithType(
