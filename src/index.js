@@ -1,11 +1,4 @@
-import Checkbox from './Checkbox'
-import RadioGroup from './RadioGroup'
-import TextField from './TextField'
-import Switch from './Switch'
-
-export {
-  Checkbox,
-  RadioGroup,
-  TextField,
-  Switch
-}
+export { default as Checkbox } from './Checkbox'
+export { default as RadioGroup } from './RadioGroup'
+export { default as TextField } from './TextField'
+export { default as Switch } from './Switch'
