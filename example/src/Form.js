@@ -19,18 +19,20 @@ import {
 // validation functions
 const required = value => (value == null ? 'Required' : undefined)
 const email = value =>
-  (value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+  value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
     ? 'Invalid email'
-    : undefined)
+    : undefined
 const tooManyPizzas = value => (value > 15 ? 'Are you mad?' : undefined)
 
 class Form extends Component {
   componentDidMount() {
-    this.refs.name // the Field
+    this.ref // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
       .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
       .focus() // on TextField
   }
+
+  saveRef = ref => (this.ref = ref)
 
   render() {
     const { handleSubmit, pristine, numPizzas, reset, submitting } = this.props
@@ -43,7 +45,7 @@ class Form extends Component {
             hintText="Name"
             floatingLabelText="Name"
             validate={required}
-            ref="name"
+            ref={this.saveRef}
             withRef
           />
         </div>
@@ -163,7 +165,9 @@ class Form extends Component {
           />
         </div>
         <div>
-          <button type="submit" disabled={submitting}>Submit</button>
+          <button type="submit" disabled={submitting}>
+            Submit
+          </button>
           <button
             type="button"
             disabled={pristine || submitting}
