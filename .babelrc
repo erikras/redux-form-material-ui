@@ -9,9 +9,6 @@
     },
     "production": {
       "plugins": ["transform-es2015-modules-commonjs"]
-    },
-    "es": {
-      "plugins": ["transform-es2015-modules-commonjs"]
     }
   }
 }
