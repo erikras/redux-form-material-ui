@@ -4,6 +4,7 @@
   "description": "An adapter between Redux Form and Material UI components",
   "main": "./lib/index.js",
   "jsnext:main": "./es/index.js",
+  "module": "./es/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/erikras/redux-form-material-ui"
