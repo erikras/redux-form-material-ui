@@ -1,7 +1,3 @@
-# SEEKING MAINTAINER
-
-This library was _mostly_ conceived as a proof-of-concept for how a popular UI form widget library could be molded to work with `redux-form`, but I don't use Material UI myself, and am having trouble finding hours in the day to dedicate to this project. It was never meant to be something that people depended upon. If you'd like to take some responsibility over this project, please [@erikras](https://twitter.com/erikras) me on Twitter.
-
 ---
 # redux-form-material-ui
 ---
