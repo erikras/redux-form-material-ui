@@ -6,7 +6,6 @@ export default createComponent(
   ({
     input: { onDragStart, onChange, name, value },
     onChange: onChangeFromField,
-    defaultValue,
     meta,
     ...props
   }) => ({
