@@ -10,7 +10,7 @@ expect.extend(expectJsx)
 describe('Checkbox', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUICheckbox.displayName).toBe(
-      'ReduxFormMaterialUICheckbox'
+      'ReduxFormMaterialUIStyle'
     )
   })
 
