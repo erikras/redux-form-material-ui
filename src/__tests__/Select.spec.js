@@ -21,7 +21,15 @@ describe('Select', () => {
           value: 'Foo'
         }
       }).render()
-    ).toEqualJSX(<Select name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
   it('renders a Select with no error when not touched', () => {
@@ -35,7 +43,15 @@ describe('Select', () => {
           error: 'FooError'
         }
       }).render()
-    ).toEqualJSX(<Select name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
   it('renders a Select with an error', () => {
@@ -57,6 +73,8 @@ describe('Select', () => {
         error
         helperText="FooError"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })
@@ -72,7 +90,15 @@ describe('Select', () => {
           warning: 'FooWarning'
         }
       }).render()
-    ).toEqualJSX(<Select name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
   it('renders a Select with an warning', () => {
@@ -94,6 +120,8 @@ describe('Select', () => {
         error
         helperText="FooWarning"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })
@@ -118,6 +146,8 @@ describe('Select', () => {
         error
         helperText="FooWarning"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })
