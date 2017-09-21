@@ -1,32 +1,40 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
-import TextField from 'material-ui/TextField'
+import Select from 'material-ui/Select'
 import React from 'react'
-import ReduxFormMaterialUITextField from '../TextField'
+import ReduxFormMaterialUISelect from '../Select'
 
 expect.extend(expectJsx)
 
-describe('TextField', () => {
+describe('Select', () => {
   it('has a display name', () => {
-    expect(ReduxFormMaterialUITextField.displayName).toBe(
-      'ReduxFormMaterialUITextField'
+    expect(ReduxFormMaterialUISelect.displayName).toBe(
+      'ReduxFormMaterialUIStyle'
     )
   })
 
-  it('renders a TextField', () => {
+  it('renders a Select', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: 'Foo'
         }
       }).render()
-    ).toEqualJSX(<TextField name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
-  it('renders a TextField with no error when not touched', () => {
+  it('renders a Select with no error when not touched', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: 'Foo'
@@ -35,12 +43,20 @@ describe('TextField', () => {
           error: 'FooError'
         }
       }).render()
-    ).toEqualJSX(<TextField name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
-  it('renders a TextField with an error', () => {
+  it('renders a Select with an error', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: 'Foo'
@@ -51,19 +67,21 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
+      <Select
         name="myText"
         value="Foo"
         error
         helperText="FooError"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })
 
-  it('renders a TextField with no warning when not touched', () => {
+  it('renders a Select with no warning when not touched', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: 'Foo'
@@ -72,12 +90,20 @@ describe('TextField', () => {
           warning: 'FooWarning'
         }
       }).render()
-    ).toEqualJSX(<TextField name="myText" value="Foo" ref={() => {}} />)
+    ).toEqualJSX(
+      <Select
+        name="myText"
+        value="Foo"
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
   })
 
-  it('renders a TextField with an warning', () => {
+  it('renders a Select with an warning', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: 'Foo'
@@ -88,19 +114,21 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
+      <Select
         name="myText"
         value="Foo"
         error
         helperText="FooWarning"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })
 
   it('should ignore defaultValue', () => {
     expect(
-      new ReduxFormMaterialUITextField({
+      new ReduxFormMaterialUISelect({
         input: {
           name: 'myText',
           value: ''
@@ -112,12 +140,14 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
+      <Select
         name="myText"
         value=""
         error
         helperText="FooWarning"
         ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
       />
     )
   })

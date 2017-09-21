@@ -3,14 +3,14 @@ const mapError = (
     meta: { touched, error, warning } = {},
     input,
     ...props
-  },
-  errorProp = 'errorText'
+  }
 ) =>
   (touched && (error || warning)
     ? {
         ...props,
         ...input,
-        [errorProp]: error || warning
+        error: Boolean(error || warning),
+        helperText: error || warning
       }
     : { ...input, ...props })
 

@@ -1,14 +1,14 @@
-import Toggle from 'material-ui/Toggle'
+import Switch from 'material-ui/Switch'
 import createComponent from './createComponent'
 
-export default createComponent(Toggle, ({
+export default createComponent(Switch, ({
   input: { onChange, value, ...inputProps },
-  defaultToggled,
+  checked,
   meta,
   ...props
 }) => ({
   ...inputProps,
   ...props,
-  onToggle: onChange,
-  toggled: !!value
+  onChange,
+  checked: !!value
 }))
