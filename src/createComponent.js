@@ -10,13 +10,13 @@ import { Component, createElement } from 'react'
 export default function createComponent(MaterialUIComponent, mapProps) {
   class InputComponent extends Component {
     getRenderedComponent() {
-      return this.refs.component
+      return this.component
     }
 
     render() {
       return createElement(MaterialUIComponent, {
         ...mapProps(this.props),
-        ref: 'component'
+        ref: el => this.component = el
       })
     }
   }
