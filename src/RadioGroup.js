@@ -2,12 +2,18 @@ import { RadioGroup } from 'material-ui/Radio'
 import createComponent from './createComponent'
 
 export default createComponent(RadioGroup, ({
-  input: { value, ...inputProps },
-  selectedValue,
+  input: { onChange, value, ...inputProps },
   meta,
+  onChange: onChangeFromField,
   ...props
 }) => ({
   ...inputProps,
   ...props,
-  selectedValue: value
+  value,
+  onChange: (event, value) => {
+    onChange(value);
+    if(onChangeFromField) {
+      onChangeFromField(value)
+    }
+  }
 }))
