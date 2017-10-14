@@ -9,8 +9,10 @@
 
 [`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is a set of
 wrappers to facilitate the use of
-[`material-ui`](https://github.com/callemall/material-ui) components with
+[`material-uibeta`](https://github.com/callemall/material-ui) components with
 [`redux-form`](https://github.com/erikras/redux-form).
+
+Latest version is supported by only for material-ui beta.
 
 ---
 
@@ -21,7 +23,13 @@ wrappers to facilitate the use of
 Using [npm](https://www.npmjs.org/):
 
 ```bash
-  $ npm install --save redux-form-material-ui
+  $ npm install --save redux-form-material-ui@next
+```
+
+Using [npm](https://yarnpkg.com):
+
+```bash
+  $ yarn add redux-form-material-ui@next
 ```
 
 ## Available Components
