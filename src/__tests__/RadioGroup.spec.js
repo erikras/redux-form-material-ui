@@ -2,6 +2,7 @@ import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import { RadioGroup } from 'material-ui/Radio'
 import React from 'react'
+import noop from 'lodash.noop'
 import TestUtils from 'react-dom/test-utils'
 import ReduxFormMaterialUIRadioGroup from '../RadioGroup'
 
@@ -19,13 +20,15 @@ describe('RadioGroup', () => {
       new ReduxFormMaterialUIRadioGroup({
         input: {
           name: 'myRadio',
-          value: 'Foo'
+          value: 'Foo',
+          onChange:{noop}
         }
       }).render()
     ).toEqualJSX(
       <RadioGroup
         name="myRadio"
         value="Foo"
+        onChange={noop}
         ref={() => {}}
       />
     )
