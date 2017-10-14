@@ -25,7 +25,7 @@ describe('RadioGroup', () => {
     ).toEqualJSX(
       <RadioGroup
         name="myRadio"
-        selectedValue="Foo"
+        value="Foo"
         ref={() => {}}
       />
     )
