@@ -7,6 +7,8 @@
 [![codecov.io](https://codecov.io/github/erikras/redux-form-material-ui/coverage.svg?branch=master)](https://codecov.io/github/erikras/redux-form-material-ui?branch=master)
 [![CDNJS version](https://img.shields.io/cdnjs/v/redux-form-material-ui.svg)](https://cdnjs.com/libraries/redux-form-material-ui)
 
+### For [`material-ui`](https://github.com/callemall/material-ui) v1-beta support see [5.0](https://github.com/erikras/redux-form-material-ui/tree/5.0) Documentation.
+
 [`redux-form-material-ui`](https://github.com/erikras/redux-form-material-ui) is a set of
 wrappers to facilitate the use of
 [`material-ui`](https://github.com/callemall/material-ui) components with
