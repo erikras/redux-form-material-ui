@@ -10,13 +10,9 @@ You simply provide the string name of the Material UI component you want to rend
 
 Available components:
 
-* [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
-* ~[TimePicker](http://www.material-ui.com/#/components/time-picker)~ [Material-4787](https://github.com/callemall/material-ui/issues/4787)
-* ~[DatePicker](http://www.material-ui.com/#/components/date-picker)~ [Material-4787](https://github.com/callemall/material-ui/issues/4787)
-* [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)
+* [RadioGroup](http://www.material-ui.com/#/components/radio-button)
 * [Select](http://www.material-ui.com/#/components/Select)
-* ~[Slider](http://www.material-ui.com/#/components/slider)~ [Material-4793](https://github.com/callemall/material-ui/issues/4793)
 * [TextField](http://www.material-ui.com/#/components/text-field)
 * [Switch](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls)
 
