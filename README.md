@@ -28,13 +28,13 @@ Using [npm](https://www.npmjs.org/):
 
 * [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
-* [TimePicker](http://www.material-ui.com/#/components/time-picker)
-* [DatePicker](http://www.material-ui.com/#/components/date-picker)
+* ~[TimePicker](http://www.material-ui.com/#/components/time-picker)~ [Material-4787](https://github.com/callemall/material-ui/issues/4787)
+* ~[DatePicker](http://www.material-ui.com/#/components/date-picker)~ [Material-4787](https://github.com/callemall/material-ui/issues/4787)
 * [RadioButtonGroup](http://www.material-ui.com/#/components/radio-button)
-* [SelectField](http://www.material-ui.com/#/components/select-field)
-* [Slider](http://www.material-ui.com/#/components/slider)
+* [Select](http://www.material-ui.com/#/components/Select)
+* ~[Slider](http://www.material-ui.com/#/components/slider)~ [Material-4793](https://github.com/callemall/material-ui/issues/4793)
 * [TextField](http://www.material-ui.com/#/components/text-field)
-* [Toggle](http://www.material-ui.com/#/components/toggle)
+* [Switch](https://material.io/guidelines/components/lists-controls.html#lists-controls-types-of-list-controls)
 
 ## Usage
 
