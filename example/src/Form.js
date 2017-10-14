@@ -7,16 +7,13 @@ import { InputLabel } from 'material-ui/Input';
 import Radio from 'material-ui/Radio';
 import { FormControl, FormControlLabel } from 'material-ui/Form';
 
-
-
-
 import {
   Checkbox,
   RadioGroup,
   Select,
   TextField,
   Switch
-} from '../../lib/'
+} from 'redux-form-material-ui'
 
 // validation functions
 const required = value => (value == null ? 'Required' : undefined)

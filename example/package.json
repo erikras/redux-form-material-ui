@@ -13,7 +13,7 @@
     "html-loader": "^0.5.1",
     "json-loader": "^0.5.7",
     "markdown-loader": "^2.0.1",
-    "material-ui": "^0.19.0",
+    "material-ui": "next",
     "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -21,7 +21,7 @@
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
-    "redux-form-material-ui": "^4.2.0",
+    "redux-form-material-ui": "next",
     "redux-form-website-template": "0.0.50"
   },
   "devDependencies": {
