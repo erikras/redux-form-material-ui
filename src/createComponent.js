@@ -1,4 +1,5 @@
 import { Component, createElement } from 'react'
+import { isStateLess } from './utils';
 
 /**
  * Creates a component class that renders the given Material UI component
@@ -16,7 +17,7 @@ export default function createComponent(MaterialUIComponent, mapProps) {
     render() {
       return createElement(MaterialUIComponent, {
         ...mapProps(this.props),
-        ref: el => this.component = el
+        ref: (!isStateLess(MaterialUIComponent) ? el => this.component = el : null)
       })
     }
   }
