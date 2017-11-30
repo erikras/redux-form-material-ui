@@ -7,7 +7,7 @@
 /// <reference types='react'/>
 
 declare module 'redux-form-material-ui' {
-  export class AutoComplete extends React.Component<__MaterialUI.AutoCompleteProps, any> {}
+  export class AutoComplete extends React.Component<__MaterialUI.AutoCompleteProps<string | React.ReactNode>, any> {}
   export class Checkbox extends React.Component<__MaterialUI.Switches.CheckboxProps, any> {}
   export class TimePicker extends React.Component<__MaterialUI.TimePickerProps, any> {}
   export class DatePicker extends React.Component<__MaterialUI.DatePicker.DatePickerProps, any> {}
