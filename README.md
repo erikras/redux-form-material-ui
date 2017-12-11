@@ -59,6 +59,7 @@ import {
   Select,
   TextField,
   Switch,
+  FormControlLabel,
 } from 'redux-form-material-ui'
 
 class MyForm extends Component {
