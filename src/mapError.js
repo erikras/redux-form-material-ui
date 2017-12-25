@@ -10,7 +10,7 @@ const mapError = (
         ...props,
         ...input,
         error: Boolean(error || warning),
-        helperText: error || warning
+        helpertext: error || warning
       }
     : { ...input, ...props })
 
