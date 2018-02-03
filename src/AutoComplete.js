@@ -13,14 +13,14 @@ export default createComponent(AutoComplete, ({
   dataSourceConfig,
   dataSource,
   searchText: dataSourceConfig && dataSource ? (dataSource.find((item) => item[dataSourceConfig.value] === value) || {})[dataSourceConfig.text] : value,
-  onNewRequest: value => {
+  onNewRequest: (value, index) => {
     onChange(
       typeof value === 'object' && dataSourceConfig
         ? value[dataSourceConfig.value]
         : value
     )
     if (onNewRequest) {
-      onNewRequest(value)
+      onNewRequest(value, index)
     }
   },
   onUpdateInput: value => {
