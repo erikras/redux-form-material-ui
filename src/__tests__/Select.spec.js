@@ -31,6 +31,26 @@ describe('Select', () => {
       />
     )
   })
+  it('renders a Select with multiple', () => {
+    expect(
+      new ReduxFormMaterialUISelect({
+        multiple: true,
+        input: {
+          name: 'myText',
+          value: ['Foo', 'Bar']
+        }
+      }).render()
+    ).toEqualJSX(
+      <Select
+        multiple
+        name="myText"
+        value={['Foo', 'Bar']}
+        ref={() => {}}
+        onChange={() => {}}
+        onBlur={() => {}}
+      />
+    )
+  })
 
   it('renders a Select with no error when not touched', () => {
     expect(
