@@ -51,8 +51,8 @@ and then pass the component class directly to the `component` prop of `Field`.
 
 ```js
 import { reduxForm, Field } from 'redux-form'
-import MenuItem from 'material-ui/MenuItem'
-import { RadioButton } from 'material-ui/RadioButton'
+import MenuItem from 'material-ui/Menu'
+import { Radio } from 'material-ui/Radio'
 import { FormControlLabel } from 'material-ui/Form'
 import {
   Checkbox,
@@ -79,9 +79,9 @@ class MyForm extends Component {
       <FormControlLabel control={<Field name="receiveEmails" component={Switch} /> } label="Please spam me!" />
 
         <Field name="bestFramework" component={RadioGroup}>
-          <RadioButton value="react" label="React"/>
-          <RadioButton value="angular" label="Angular"/>
-          <RadioButton value="ember" label="Ember"/>
+          <Radio value="react" label="React"/>
+          <Radio value="angular" label="Angular"/>
+          <Radio value="ember" label="Ember"/>
         </Field>
       </form>
     )
