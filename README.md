@@ -26,7 +26,7 @@ Using [npm](https://www.npmjs.org/):
   $ npm install --save redux-form-material-ui@next
 ```
 
-Using [npm](https://yarnpkg.com):
+Using [yarn](https://yarnpkg.com):
 
 ```bash
   $ yarn add redux-form-material-ui@next
