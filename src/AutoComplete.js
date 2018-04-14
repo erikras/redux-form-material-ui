@@ -3,13 +3,13 @@ import createComponent from './createComponent'
 import mapError from './mapError'
 
 export default createComponent(AutoComplete, ({
-  input: { onChange, value },
+  input: { onChange, onBlur, value, ...inputRest },
   onNewRequest,
   dataSourceConfig,
   dataSource,
   ...props
 }) => ({
-  ...mapError(props),
+  ...mapError({ ...props, input: { onBlur() {onBlur()}, ...inputRest } }),
   dataSourceConfig,
   dataSource,
   searchText: dataSourceConfig && dataSource ? (dataSource.find((item) => item[dataSourceConfig.value] === value) || {})[dataSourceConfig.text] : value,

@@ -12,6 +12,8 @@ expect.extend(expectJsx)
 
 describe('AutoComplete', () => {
   const dataSource = ['One', 'Two', 'Three']
+  const onFocus = () => {}
+  const onBlur = () => {}
 
   it('has a display name', () => {
     expect(ReduxFormMaterialUIAutoComplete.displayName).toBe(
@@ -26,11 +28,15 @@ describe('AutoComplete', () => {
         input: {
           name: 'myAutoComplete',
           value: 'Foo',
-          onBlur: noop
+          onFocus: onFocus,
+          onBlur: onBlur
         }
       }).render()
     ).toEqualJSX(
       <AutoComplete
+        name="myAutoComplete"
+        onFocus={onFocus}
+        onBlur={onBlur}
         dataSource={dataSource}
         searchText="Foo"
         onNewRequest={noop}
@@ -46,7 +52,8 @@ describe('AutoComplete', () => {
         input: {
           name: 'myAutoComplete',
           value: 'Foo',
-          onBlur: noop
+          onFocus: onFocus,
+          onBlur: onBlur
         },
         meta: {
           error: 'FooError'
@@ -54,6 +61,9 @@ describe('AutoComplete', () => {
       }).render()
     ).toEqualJSX(
       <AutoComplete
+        name="myAutoComplete"
+        onBlur={onBlur}
+        onFocus={onFocus}
         dataSource={dataSource}
         searchText="Foo"
         onNewRequest={noop}
@@ -69,7 +79,8 @@ describe('AutoComplete', () => {
         input: {
           name: 'myAutoComplete',
           value: 'Foo',
-          onBlur: noop
+          onFocus: onFocus,
+          onBlur: onBlur
         },
         meta: {
           error: 'FooError',
@@ -78,6 +89,9 @@ describe('AutoComplete', () => {
       }).render()
     ).toEqualJSX(
       <AutoComplete
+        name="myAutoComplete"
+        onBlur={onBlur}
+        onFocus={onFocus}
         dataSource={dataSource}
         searchText="Foo"
         errorText="FooError"
@@ -101,6 +115,8 @@ describe('AutoComplete', () => {
       }).render()
     ).toEqualJSX(
       <AutoComplete
+        name="myAutoComplete"
+        onBlur={onBlur}
         dataSource={dataSource}
         searchText="Foo"
         onNewRequest={noop}
@@ -124,6 +140,8 @@ describe('AutoComplete', () => {
       }).render()
     ).toEqualJSX(
       <AutoComplete
+        name="myAutoComplete"
+        onBlur={onBlur}
         dataSource={dataSource}
         searchText="Foo"
         errorText="FooWarning"
@@ -173,5 +191,27 @@ describe('AutoComplete', () => {
     )
     expect(element.getRenderedComponent).toBeA('function')
     expect(element.getRenderedComponent()).toExist()
+  })
+
+  it('calls onBlur without event', () => {
+      const onBlurSpy = createSpy()
+      const testEvent = {}
+
+      const dom = TestUtils.renderIntoDocument(
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+          <ReduxFormMaterialUIAutoComplete
+            dataSource={dataSource}
+            input={{ onBlur: onBlurSpy, value: 'Foo' }}
+          />
+        </MuiThemeProvider>
+      )
+
+      const autocomplete = TestUtils.findRenderedComponentWithType(
+        dom,
+        AutoComplete
+      )
+      expect(onBlurSpy).toNotHaveBeenCalled()
+      autocomplete.props.onBlur(testEvent)
+      expect(onBlurSpy).toHaveBeenCalled().toHaveBeenCalledWith()
   })
 })
