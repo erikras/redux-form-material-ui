@@ -3,7 +3,7 @@ import createComponent from './createComponent'
 import mapError from './mapError'
 
 export default createComponent(AutoComplete, ({
-  input: { onChange, value },
+  input: { onChange, value, onUpdateInput },
   onNewRequest,
   dataSourceConfig,
   dataSource,
@@ -24,8 +24,6 @@ export default createComponent(AutoComplete, ({
     }
   },
   onUpdateInput: value => {
-    if (!dataSourceConfig) {
-      onChange(value)
-    }
+      onUpdateInput(value)
   }
 }))
