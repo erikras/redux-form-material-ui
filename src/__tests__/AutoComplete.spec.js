@@ -157,6 +157,30 @@ describe('AutoComplete', () => {
     expect(onChange).toHaveBeenCalled().toHaveBeenCalledWith('TheValue')
   })
 
+  it('triggers onUpdateInput callback passed to component', () => {
+    const onUpdateInput = createSpy()
+    const params = { source: 'source' }
+
+    const dom = TestUtils.renderIntoDocument(
+      <MuiThemeProvider muiTheme={getMuiTheme()}>
+        <ReduxFormMaterialUIAutoComplete
+          dataSource={dataSource}
+          input={{ onChange: noop, value: 'Foo' }}
+          onUpdateInput={onUpdateInput}
+        />
+      </MuiThemeProvider>
+    )
+
+    const autocomplete = TestUtils.findRenderedComponentWithType(
+      dom,
+      AutoComplete
+    )
+
+    expect(onUpdateInput).toNotHaveBeenCalled()
+    autocomplete.props.onUpdateInput('TheValue', dataSource, params)
+    expect(onUpdateInput).toHaveBeenCalled().toHaveBeenCalledWith('TheValue', dataSource, params)
+  })
+
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
       <MuiThemeProvider muiTheme={getMuiTheme()}>
