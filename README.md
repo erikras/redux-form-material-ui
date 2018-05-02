@@ -52,7 +52,7 @@ and then pass the component class directly to the `component` prop of `Field`.
 ```js
 import { reduxForm, Field } from 'redux-form'
 import MenuItem from 'material-ui/Menu'
-import { Radio } from 'material-ui/Radio'
+import Radio from 'material-ui/Radio'
 import { FormControlLabel } from 'material-ui/Form'
 import {
   Checkbox,
