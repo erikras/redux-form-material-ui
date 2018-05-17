@@ -1,7 +1,7 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import noop from 'lodash.noop'
-import Switch from 'material-ui/Switch'
+import Switch from '@material-ui/core/Switch'
 import React from 'react'
 import TestUtils from 'react-dom/test-utils'
 import ReduxFormMaterialUISwitch from '../Switch'
@@ -11,7 +11,7 @@ expect.extend(expectJsx)
 describe('Switch', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUISwitch.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
+      'ReduxFormMaterialUIWithStyles'
     )
   })
 

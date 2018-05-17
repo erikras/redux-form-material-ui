@@ -1,4 +1,4 @@
-import Select from 'material-ui/Select'
+import Select from '@material-ui/core/Select'
 import createComponent from './createComponent'
 import mapError from './mapError'
 

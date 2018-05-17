@@ -1,6 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
-import TextField from 'material-ui/TextField'
+import TextField from '@material-ui/core/TextField'
 import React from 'react'
 import ReduxFormMaterialUITextField from '../TextField'
 
@@ -55,7 +55,7 @@ describe('TextField', () => {
         name="myText"
         value="Foo"
         error
-        helperText="FooError"
+        helpertext="FooError"
       />
     )
   })
@@ -91,7 +91,7 @@ describe('TextField', () => {
         name="myText"
         value="Foo"
         error
-        helperText="FooWarning"
+        helpertext="FooWarning"
       />
     )
   })
@@ -114,7 +114,7 @@ describe('TextField', () => {
         name="myText"
         value=""
         error
-        helperText="FooWarning"
+        helpertext="FooWarning"
       />
     )
   })

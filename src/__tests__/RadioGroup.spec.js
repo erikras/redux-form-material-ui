@@ -1,6 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
-import { RadioGroup } from 'material-ui/Radio'
+import { RadioGroup } from '@material-ui/core/Radio'
 import React from 'react'
 import noop from 'lodash.noop'
 import TestUtils from 'react-dom/test-utils'
@@ -11,7 +11,7 @@ expect.extend(expectJsx)
 describe('RadioGroup', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUIRadioGroup.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
+      'ReduxFormMaterialUIRadioGroup'
     )
   })
 
