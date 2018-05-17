@@ -1,7 +1,7 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import noop from 'lodash.noop'
-import Switch from 'material-ui/Switch'
+import Switch from '@material-ui/core/Switch'
 import React from 'react'
 import TestUtils from 'react-dom/test-utils'
 import ReduxFormMaterialUISwitch from '../Switch'
@@ -11,7 +11,7 @@ expect.extend(expectJsx)
 describe('Switch', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUISwitch.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
+      'ReduxFormMaterialUIWithStyles'
     )
   })
 
@@ -23,13 +23,7 @@ describe('Switch', () => {
           onChange: noop
         }
       }).render()
-    ).toEqualJSX(
-      <Switch
-        name="mySwitch"
-        onChange={noop}
-        ref={() => {}}
-      />
-    )
+    ).toEqualJSX(<Switch name="mySwitch" onChange={noop} ref={() => {}} />)
   })
 
   it('renders a checked Switch', () => {
@@ -42,12 +36,7 @@ describe('Switch', () => {
         }
       }).render()
     ).toEqualJSX(
-      <Switch
-        name="mySwitch"
-        onChange={noop}
-        ref={() => {}}
-        checked
-      />
+      <Switch name="mySwitch" onChange={noop} ref={() => {}} checked />
     )
   })
 
@@ -60,13 +49,7 @@ describe('Switch', () => {
         },
         checked: true
       }).render()
-    ).toEqualJSX(
-      <Switch
-        name="mySwitch"
-        onChange={noop}
-        ref={() => {}}
-      />
-    )
+    ).toEqualJSX(<Switch name="mySwitch" onChange={noop} ref={() => {}} />)
   })
 
   it('renders a controlled Switch', () => {
@@ -95,9 +78,7 @@ describe('Switch', () => {
 
   it('provides getRenderedComponent', () => {
     const dom = TestUtils.renderIntoDocument(
-      <ReduxFormMaterialUISwitch
-        input={{ name: 'mySwitch', onChange: noop }}
-      />
+      <ReduxFormMaterialUISwitch input={{ name: 'mySwitch', onChange: noop }} />
     )
 
     const element = TestUtils.findRenderedComponentWithType(
