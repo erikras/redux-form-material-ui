@@ -9,19 +9,18 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0-rc.1",
     "babel-polyfill": "^6.26.0",
     "html-loader": "^0.5.1",
     "json-loader": "^0.5.7",
     "markdown-loader": "^2.0.1",
-    "material-ui": "next",
     "raw-loader": "^0.5.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "react-redux": "^5.0.6",
-    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-form": "^7.0.3",
-    "redux-form-material-ui": "next",
+    "redux-form-material-ui": "file:..",
     "redux-form-website-template": "0.0.50"
   },
   "devDependencies": {

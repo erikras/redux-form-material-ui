@@ -1,24 +1,24 @@
-import expect from 'expect'
-import expectJsx from 'expect-jsx'
-import noop from 'lodash.noop'
-import Checkbox from 'material-ui/Checkbox'
-import React from 'react'
-import ReduxFormMaterialUICheckbox from '../Checkbox'
+import expect from "expect";
+import expectJsx from "expect-jsx";
+import noop from "lodash.noop";
+import Checkbox from "@material-ui/core/Checkbox";
+import React from "react";
+import ReduxFormMaterialUICheckbox from "../Checkbox";
 
-expect.extend(expectJsx)
+expect.extend(expectJsx);
 
-describe('Checkbox', () => {
-  it('has a display name', () => {
+describe("Checkbox", () => {
+  it("has a display name", () => {
     expect(ReduxFormMaterialUICheckbox.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
-    )
-  })
+      "ReduxFormMaterialUIWithStyles"
+    );
+  });
 
-  it('renders an unchecked Checkbox', () => {
+  it("renders an unchecked Checkbox", () => {
     expect(
       new ReduxFormMaterialUICheckbox({
         input: {
-          name: 'myCheckbox',
+          name: "myCheckbox",
           onChange: noop
         }
       }).render()
@@ -29,14 +29,14 @@ describe('Checkbox', () => {
         onChange={noop}
         ref={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('renders a checked Checkbox', () => {
+  it("renders a checked Checkbox", () => {
     expect(
       new ReduxFormMaterialUICheckbox({
         input: {
-          name: 'myCheckbox',
+          name: "myCheckbox",
           onChange: noop,
           value: true
         }
@@ -48,24 +48,18 @@ describe('Checkbox', () => {
         onChange={noop}
         ref={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('should ignore defaultChecked', () => {
+  it("should ignore defaultChecked", () => {
     expect(
       new ReduxFormMaterialUICheckbox({
         input: {
-          name: 'myCheckbox',
+          name: "myCheckbox",
           onChange: noop
         },
         defaultChecked: true
       }).render()
-    ).toEqualJSX(
-      <Checkbox
-        name="myCheckbox"
-        onChange={noop}
-        ref={() => {}}
-      />
-    )
-  })
-})
+    ).toEqualJSX(<Checkbox name="myCheckbox" onChange={noop} ref={() => {}} />);
+  });
+});

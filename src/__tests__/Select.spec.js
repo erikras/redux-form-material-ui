@@ -1,24 +1,24 @@
-import expect from 'expect'
-import expectJsx from 'expect-jsx'
-import Select from 'material-ui/Select'
-import React from 'react'
-import ReduxFormMaterialUISelect from '../Select'
+import expect from "expect";
+import expectJsx from "expect-jsx";
+import Select from "@material-ui/core/Select";
+import React from "react";
+import ReduxFormMaterialUISelect from "../Select";
 
-expect.extend(expectJsx)
+expect.extend(expectJsx);
 
-describe('Select', () => {
-  it('has a display name', () => {
+describe("Select", () => {
+  it("has a display name", () => {
     expect(ReduxFormMaterialUISelect.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
-    )
-  })
+      "ReduxFormMaterialUIWithStyles"
+    );
+  });
 
-  it('renders a Select', () => {
+  it("renders a Select", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: 'Foo'
+          name: "myText",
+          value: "Foo"
         }
       }).render()
     ).toEqualJSX(
@@ -29,18 +29,18 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('renders a Select with no error when not touched', () => {
+  it("renders a Select with no error when not touched", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: 'Foo'
+          name: "myText",
+          value: "Foo"
         },
         meta: {
-          error: 'FooError'
+          error: "FooError"
         }
       }).render()
     ).toEqualJSX(
@@ -51,18 +51,18 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('renders a Select with an error', () => {
+  it("renders a Select with an error", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: 'Foo'
+          name: "myText",
+          value: "Foo"
         },
         meta: {
-          error: 'FooError',
+          error: "FooError",
           touched: true
         }
       }).render()
@@ -76,18 +76,18 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('renders a Select with no warning when not touched', () => {
+  it("renders a Select with no warning when not touched", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: 'Foo'
+          name: "myText",
+          value: "Foo"
         },
         meta: {
-          warning: 'FooWarning'
+          warning: "FooWarning"
         }
       }).render()
     ).toEqualJSX(
@@ -98,18 +98,18 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('renders a Select with an warning', () => {
+  it("renders a Select with an warning", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: 'Foo'
+          name: "myText",
+          value: "Foo"
         },
         meta: {
-          warning: 'FooWarning',
+          warning: "FooWarning",
           touched: true
         }
       }).render()
@@ -123,19 +123,19 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
+    );
+  });
 
-  it('should ignore defaultValue', () => {
+  it("should ignore defaultValue", () => {
     expect(
       new ReduxFormMaterialUISelect({
         input: {
-          name: 'myText',
-          value: ''
+          name: "myText",
+          value: ""
         },
-        defaultValue: '5',
+        defaultValue: "5",
         meta: {
-          warning: 'FooWarning',
+          warning: "FooWarning",
           touched: true
         }
       }).render()
@@ -149,6 +149,6 @@ describe('Select', () => {
         onChange={() => {}}
         onBlur={() => {}}
       />
-    )
-  })
-})
+    );
+  });
+});

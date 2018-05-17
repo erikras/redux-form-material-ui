@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Field, reduxForm, formValueSelector } from 'redux-form'
-import { MenuItem } from 'material-ui/Menu';
-import { InputLabel } from 'material-ui/Input';
-import Radio from 'material-ui/Radio';
-import { FormControl, FormControlLabel } from 'material-ui/Form';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Field, reduxForm, formValueSelector } from "redux-form";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import Radio from "@material-ui/core/Radio";
+import FormControl from "@material-ui/core/FormControl";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import {
   Checkbox,
@@ -12,14 +13,14 @@ import {
   Select,
   TextField,
   Switch
-} from 'redux-form-material-ui'
+} from "redux-form-material-ui";
 
 // validation functions
-const required = value => (value == null ? 'Required' : undefined)
+const required = value => (value == null ? "Required" : undefined);
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
-    ? 'Invalid email'
-    : undefined
+    ? "Invalid email"
+    : undefined;
 
 class Form extends Component {
   componentDidMount() {
@@ -29,10 +30,11 @@ class Form extends Component {
     //   .focus() // on TextField
   }
 
-  saveRef = ref => (this.ref = ref)
+  saveRef = ref => (this.ref = ref);
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props
+    const { handleSubmit, pristine, reset, submitting } = this.props;
+
     return (
       <form onSubmit={handleSubmit}>
         <div>
@@ -57,8 +59,16 @@ class Form extends Component {
         </div>
         <div>
           <Field name="delivery" component={RadioGroup}>
-            <FormControlLabel value="pickup" control={<Field name="thinCrust" component={Radio} /> } label="Pickup" />
-            <FormControlLabel value="delivery" control={<Field name="thinCrust" component={Radio} /> } label="Delivery" />
+            <FormControlLabel
+              value="pickup"
+              control={<Radio />}
+              label="Pickup"
+            />
+            <FormControlLabel
+              value="delivery"
+              control={<Radio />}
+              label="Delivery"
+            />
           </Field>
         </div>
         <div>
@@ -68,7 +78,6 @@ class Form extends Component {
               name="driver"
               component={Select}
               placeholder="Driver"
-              autoWidth={true}
               validate={required}
             >
               <MenuItem value="alice@redux-pizza.com">Alice</MenuItem>
@@ -78,16 +87,28 @@ class Form extends Component {
           </FormControl>
         </div>
         <div className="list-margin">
-          <FormControlLabel control={<Field name="thinCrust" component={Switch} /> } label="Thin Chrust" />
+          <FormControlLabel
+            control={<Field name="thinCrust" component={Switch} />}
+            label="Thin Chrust"
+          />
         </div>
         <div className="list-margin">
-          <FormControlLabel control={<Field name="pepperoni" component={Checkbox} /> } label="Pepperoni" />
+          <FormControlLabel
+            control={<Field name="pepperoni" component={Checkbox} />}
+            label="Pepperoni"
+          />
         </div>
         <div className="list-margin">
-          <FormControlLabel control={<Field name="mushrooms" component={Checkbox} /> } label="Mushrooms" />
+          <FormControlLabel
+            control={<Field name="mushrooms" component={Checkbox} />}
+            label="Mushrooms"
+          />
         </div>
         <div className="list-margin">
-          <FormControlLabel control={<Field name="peppers" component={Checkbox} /> } label="Peppers" />
+          <FormControlLabel
+            control={<Field name="peppers" component={Checkbox} />}
+            label="Peppers"
+          />
         </div>
         <div>
           <Field
@@ -95,7 +116,7 @@ class Form extends Component {
             component={TextField}
             placeholder="Notes"
             label="Notes"
-            multiLine={true}
+            multiline={true}
             rows={4}
           />
         </div>
@@ -112,25 +133,25 @@ class Form extends Component {
           </button>
         </div>
       </form>
-    )
+    );
   }
 }
 
-const selector = formValueSelector('example')
+const selector = formValueSelector("example");
 
 Form = connect(state => ({
-  numPizzas: selector(state, 'pizzas')
-}))(Form)
+  numPizzas: selector(state, "pizzas")
+}))(Form);
 
 Form = reduxForm({
-  form: 'example',
+  form: "example",
   initialValues: {
-    delivery: 'delivery',
-    name: 'Jane Doe',
-    cheese: 'Cheddar',
+    delivery: "delivery",
+    name: "Jane Doe",
+    cheese: "Cheddar",
     thinCrust: true,
     pizzas: 1
   }
-})(Form)
+})(Form);
 
-export default Form
+export default Form;
