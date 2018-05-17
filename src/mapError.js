@@ -1,17 +1,23 @@
-const mapError = (
-  {
-    meta: { touched, error, warning } = {},
-    input,
-    ...props
+const mapError = ({
+  hasHelperText = true,
+  meta: { touched, error, warning } = {},
+  input,
+  ...props
+}) => {
+  const errorProps =
+    touched && (error || warning)
+      ? {
+          ...props,
+          ...input,
+          error: Boolean(error || warning)
+        }
+      : { ...input, ...props }
+
+  if (touched && hasHelperText && (error || warning)) {
+    errorProps.helperText = error || warning
   }
-) =>
-  (touched && (error || warning)
-    ? {
-        ...props,
-        ...input,
-        error: Boolean(error || warning),
-        helpertext: error || warning
-      }
-    : { ...input, ...props })
+
+  return errorProps
+}
 
 export default mapError

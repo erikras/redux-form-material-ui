@@ -1,7 +1,7 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
 import noop from 'lodash.noop'
-import Checkbox from 'material-ui/Checkbox'
+import Checkbox from '@material-ui/core/Checkbox'
 import React from 'react'
 import ReduxFormMaterialUICheckbox from '../Checkbox'
 
@@ -10,7 +10,7 @@ expect.extend(expectJsx)
 describe('Checkbox', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUICheckbox.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
+      'ReduxFormMaterialUIWithStyles'
     )
   })
 
@@ -60,12 +60,6 @@ describe('Checkbox', () => {
         },
         defaultChecked: true
       }).render()
-    ).toEqualJSX(
-      <Checkbox
-        name="myCheckbox"
-        onChange={noop}
-        ref={() => {}}
-      />
-    )
+    ).toEqualJSX(<Checkbox name="myCheckbox" onChange={noop} ref={() => {}} />)
   })
 })

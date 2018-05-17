@@ -26,7 +26,7 @@ Using [npm](https://www.npmjs.org/):
   $ npm install --save redux-form-material-ui@next
 ```
 
-Using [yarn](https://yarnpkg.com):
+Using [npm](https://yarnpkg.com):
 
 ```bash
   $ yarn add redux-form-material-ui@next
@@ -51,15 +51,15 @@ and then pass the component class directly to the `component` prop of `Field`.
 
 ```js
 import { reduxForm, Field } from 'redux-form'
-import MenuItem from 'material-ui/Menu'
-import { Radio } from 'material-ui/Radio'
-import { FormControlLabel } from 'material-ui/Form'
+import MenuItem from '@material-ui/core/MenuItem'
+import Radio from '@material-ui/core/RadioButton'
 import {
   Checkbox,
   RadioGroup,
   Select,
   TextField,
   Switch,
+  FormControlLabel,
 } from 'redux-form-material-ui'
 
 class MyForm extends Component {
