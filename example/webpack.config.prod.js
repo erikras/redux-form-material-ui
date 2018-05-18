@@ -18,11 +18,6 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
     })
   ],
   resolve: {
@@ -30,19 +25,19 @@ module.exports = {
     extensions: [ '.json', '.js' ]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loaders: [ 'babel-loader' ],
+        use: [ 'babel-loader' ],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        use: 'json-loader'
       },
       {
         test: /\.md/,
-        loaders: [ "html-loader", "markdown-loader" ]
+        use: [ "html-loader", "markdown-loader" ]
       }
     ]
   }
