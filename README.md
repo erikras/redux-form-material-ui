@@ -26,7 +26,7 @@ Using [npm](https://www.npmjs.org/):
   $ npm install --save redux-form-material-ui@next
 ```
 
-Using [npm](https://yarnpkg.com):
+Using [yarn](https://yarnpkg.com):
 
 ```bash
   $ yarn add redux-form-material-ui@next
@@ -52,14 +52,15 @@ and then pass the component class directly to the `component` prop of `Field`.
 ```js
 import { reduxForm, Field } from 'redux-form'
 import MenuItem from '@material-ui/core/MenuItem'
-import RadioButton from '@material-ui/core/RadioButton'
+import Radio from '@material-ui/core/Radio'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+
 import {
   Checkbox,
   RadioGroup,
   Select,
   TextField,
   Switch,
-  FormControlLabel,
 } from 'redux-form-material-ui'
 
 class MyForm extends Component {
@@ -79,9 +80,9 @@ class MyForm extends Component {
       <FormControlLabel control={<Field name="receiveEmails" component={Switch} /> } label="Please spam me!" />
 
         <Field name="bestFramework" component={RadioGroup}>
-          <RadioButton value="react" label="React"/>
-          <RadioButton value="angular" label="Angular"/>
-          <RadioButton value="ember" label="Ember"/>
+          <Radio value="react" label="React"/>
+          <Radio value="angular" label="Angular"/>
+          <Radio value="ember" label="Ember"/>
         </Field>
       </form>
     )

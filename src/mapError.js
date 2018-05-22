@@ -16,7 +16,7 @@ const mapError = ({
   if (touched && hasHelperText && (error || warning)) {
     errorProps.helperText = error || warning;
   }
-
+  
   return errorProps;
 };
 
