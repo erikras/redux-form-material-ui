@@ -1,6 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
-import TextField from 'material-ui/TextField'
+import TextField from '@material-ui/core/TextField'
 import React from 'react'
 import ReduxFormMaterialUITextField from '../TextField'
 
@@ -51,12 +51,7 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
-        name="myText"
-        value="Foo"
-        error
-        helperText="FooError"
-      />
+      <TextField name="myText" value="Foo" error helperText="FooError" />
     )
   })
 
@@ -87,12 +82,7 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
-        name="myText"
-        value="Foo"
-        error
-        helperText="FooWarning"
-      />
+      <TextField name="myText" value="Foo" error helperText="FooWarning" />
     )
   })
 
@@ -110,12 +100,7 @@ describe('TextField', () => {
         }
       }).render()
     ).toEqualJSX(
-      <TextField
-        name="myText"
-        value=""
-        error
-        helperText="FooWarning"
-      />
+      <TextField name="myText" value="" error helperText="FooWarning" />
     )
   })
 })

@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import injectTapEventPlugin from 'react-tap-event-plugin'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { reducer as reduxFormReducer } from 'redux-form'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { Code, Markdown, Values } from 'redux-form-website-template'
-injectTapEventPlugin()
+
 const dest = document.getElementById('content')
 const reducer = combineReducers({
   form: reduxFormReducer // mounted under "form"
@@ -30,23 +28,21 @@ let render = () => {
   const raw = require('!!raw-loader!./Form')
   ReactDOM.render(
     <Provider store={store}>
-      <MuiThemeProvider>
-        <div>
-          <Markdown content={readme} />
+      <div>
+        <Markdown content={readme} />
 
-          <h2>Form</h2>
+        <h2>Form</h2>
 
-          <Form onSubmit={showResults} />
+        <Form onSubmit={showResults} />
 
-          <Values form="example" />
+        <Values form="example" />
 
-          <h2>Code</h2>
+        <h2>Code</h2>
 
-          <h4>Form.js</h4>
+        <h4>Form.js</h4>
 
-          <Code source={raw} />
-        </div>
-      </MuiThemeProvider>
+        <Code source={raw} />
+      </div>
     </Provider>,
     dest
   )

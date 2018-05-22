@@ -1,6 +1,6 @@
 import expect from 'expect'
 import expectJsx from 'expect-jsx'
-import Select from 'material-ui/Select'
+import Select from '@material-ui/core/Select'
 import React from 'react'
 import ReduxFormMaterialUISelect from '../Select'
 
@@ -9,7 +9,7 @@ expect.extend(expectJsx)
 describe('Select', () => {
   it('has a display name', () => {
     expect(ReduxFormMaterialUISelect.displayName).toBe(
-      'ReduxFormMaterialUIStyle'
+      'ReduxFormMaterialUIWithStyles'
     )
   })
 
@@ -31,6 +31,7 @@ describe('Select', () => {
       />
     )
   })
+
   it('renders a Select with multiple', () => {
     expect(
       new ReduxFormMaterialUISelect({
@@ -91,7 +92,7 @@ describe('Select', () => {
         name="myText"
         value="Foo"
         error
-        helperText="FooError"
+        //helperText="FooError"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
@@ -138,7 +139,7 @@ describe('Select', () => {
         name="myText"
         value="Foo"
         error
-        helperText="FooWarning"
+        //helperText="FooWarning"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
@@ -164,7 +165,7 @@ describe('Select', () => {
         name="myText"
         value=""
         error
-        helperText="FooWarning"
+        //helperText="FooWarning"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
