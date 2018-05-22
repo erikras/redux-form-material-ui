@@ -74,7 +74,7 @@
   },
   "peerDependencies": {
     "react": "16",
-    "redux-form": "7"
+    "redux-form": "7",
     "@material-ui/core": "1"
   },
   "files": ["README.md", "lib", "es", "dist"],
