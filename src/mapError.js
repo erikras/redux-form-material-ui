@@ -13,7 +13,7 @@ const mapError = ({
         }
       : { ...input, ...props };
 
-  if (hasHelperText) {
+  if (touched && hasHelperText && (error || warning)) {
     errorProps.helperText = error || warning;
   }
 
