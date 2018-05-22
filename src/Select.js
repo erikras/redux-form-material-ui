@@ -1,6 +1,6 @@
-import Select from "@material-ui/core/Select";
-import createComponent from "./createComponent";
-import mapError from "./mapError";
+import Select from '@material-ui/core/Select';
+import createComponent from './createComponent';
+import mapError from './mapError';
 
 export default createComponent(
   Select,
