@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/erikras/redux-form-material-ui",
   "devDependencies": {
-    "@material-ui/core": "^1.0.0-rc.1",
+    "@material-ui/core": "^1.0.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
