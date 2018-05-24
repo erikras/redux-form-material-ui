@@ -55,7 +55,7 @@ describe('TextField', () => {
         name="myText"
         value="Foo"
         error
-        helpertext="FooError"
+        helperText="FooError"
       />
     )
   })
@@ -91,7 +91,7 @@ describe('TextField', () => {
         name="myText"
         value="Foo"
         error
-        helpertext="FooWarning"
+        helperText="FooWarning"
       />
     )
   })
@@ -114,7 +114,7 @@ describe('TextField', () => {
         name="myText"
         value=""
         error
-        helpertext="FooWarning"
+        helperText="FooWarning"
       />
     )
   })

@@ -91,7 +91,7 @@ describe('Select', () => {
         name="myText"
         value="Foo"
         error
-        helpertext="FooError"
+        helperText="FooError"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
@@ -138,7 +138,7 @@ describe('Select', () => {
         name="myText"
         value="Foo"
         error
-        helpertext="FooWarning"
+        helperText="FooWarning"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
@@ -164,7 +164,7 @@ describe('Select', () => {
         name="myText"
         value=""
         error
-        helpertext="FooWarning"
+        helperText="FooWarning"
         ref={() => {}}
         onChange={() => {}}
         onBlur={() => {}}
