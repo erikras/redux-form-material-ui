@@ -9,11 +9,11 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
+    "@material-ui/core": "^1.0.0",
     "babel-polyfill": "^6.26.0",
     "html-loader": "^0.5.1",
     "json-loader": "^0.5.7",
     "markdown-loader": "^2.0.1",
-    "material-ui": "next",
     "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
