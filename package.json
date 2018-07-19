@@ -2,19 +2,21 @@
   "name": "redux-form-material-ui",
   "version": "5.0.0-beta.3",
   "description": "An adapter between Redux Form and Material UI components",
-  "main": "./lib/index.js",
+  "main": "./index.js",
   "jsnext:main": "./es/index.js",
+  "modules.root": "./es",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/erikras/redux-form-material-ui"
   },
   "scripts": {
-    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
-    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
-    "build:lib": "babel src --out-dir lib",
+    "build": "npm run clean && npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore src/__tests__",
+    "build:lib": "babel src --out-dir . --ignore src/__tests__",
     "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-form-material-ui.js",
     "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-form-material-ui.min.js",
-    "clean": "rimraf dist lib",
+    "clean": "rimraf $(cd src; ls) dist lib es",
     "lint": "eslint src",
     "prepublish": "npm run test && npm run lint && npm run clean && npm run build",
     "test": "mocha --compilers js:babel-register --recursive --recursive \"src/**/__tests__/*\" --require src/__tests__/setup.js",
@@ -76,7 +78,7 @@
     "redux-form": "7",
     "@material-ui/core": "1"
   },
-  "files": ["README.md", "lib", "es", "dist"],
+  "files": ["README.md", "*.js", "es", "dist"],
   "nyc": {
     "include": ["src/**/*.js"],
     "sourceMap": false,
