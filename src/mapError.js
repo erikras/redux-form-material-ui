@@ -13,8 +13,12 @@ const mapError = ({
         }
       : { ...input, ...props }
 
-  if (touched && hasHelperText && (error || warning)) {
-    errorProps.helperText = error || warning
+  if (hasHelperText) {
+    if (touched && (error || warning)) {
+      errorProps.helperText = error || warning
+    } else {
+      errorProps.helperText = ' ' // Reserve vertical space for a future error/warning.
+    }
   }
 
   return errorProps
