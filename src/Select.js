@@ -12,7 +12,7 @@ export default createComponent(
   }) => ({
     ...mapError({ ...props, hasHelperText: false }),
     ...inputProps,
-    value: value,
+    value: props.multiple && !Array.isArray(value) ? [] : value,
     onChange: event => {
       onChange(event.target.value);
       if (onChangeFromField) {
