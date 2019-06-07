@@ -28,7 +28,6 @@ Using [npm](https://www.npmjs.org/):
 
 ## Available Components
 
-* [AutoComplete](http://www.material-ui.com/#/components/auto-complete)
 * [Checkbox](http://www.material-ui.com/#/components/checkbox)
 * [TimePicker](http://www.material-ui.com/#/components/time-picker)
 * [DatePicker](http://www.material-ui.com/#/components/date-picker)
