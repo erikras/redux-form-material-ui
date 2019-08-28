@@ -1,1 +1,1 @@
-export const isStateLess = Component => !Component.prototype.render
+export const isStateLess = Component => !Component.prototype || !Component.prototype.render
